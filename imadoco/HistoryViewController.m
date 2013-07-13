@@ -7,13 +7,16 @@
 //
 
 #import "HistoryViewController.h"
-#import "Position.h"
+#import "Notification.h"
+#import "MapViewController.h"
 
 @interface HistoryViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *historyTableView;
 
-@property (strong, nonatomic) NSMutableArray *historyArray;
+@property (strong, nonatomic) NSMutableArray *notificationArray;
+
+@property (strong, nonatomic) MapViewController *mapViewController;
 
 @end
 
@@ -44,12 +47,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // バッジを消す
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
 
 #pragma mark - public method
 
-- (void)showHistoryArray:(NSMutableArray *)array
+- (void)showNotificationArray:(NSMutableArray *)array
 {
-    self.historyArray = array;
+    self.notificationArray = array;
 }
 
 
@@ -57,7 +67,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.historyArray.count;
+    return self.notificationArray.count;
 }
 
 
@@ -72,9 +82,9 @@
     }
     
     
-    Position *position = [self.historyArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@さんからの通知", position.name];
-    cell.detailTextLabel.text = position.updatedAt;
+    Notification *notification = [self.notificationArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@さんからの通知", notification.name];
+    cell.detailTextLabel.text = notification.updatedAt;
     
     return cell;
 }
@@ -94,7 +104,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // 何もしない
+    Notification *notification = [self.notificationArray objectAtIndex:indexPath.row];
+    if (notification) {
+        if (self.mapViewController == nil) {
+            self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController"
+                                                                         bundle:nil];
+        }
+        [self.mapViewController showNotification:notification];
+        [self.navigationController pushViewController:self.mapViewController animated:YES];
+    }
 }
 
 @end

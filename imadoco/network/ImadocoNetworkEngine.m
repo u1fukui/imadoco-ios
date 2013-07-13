@@ -16,8 +16,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-//        NSString *host = [[[NSBundle mainBundle] infoDictionary] objectForKey:];
-        NSString *host = @"localhost:4567";
+        NSString *host = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"ServerHostName"];
         NSLog(@"%s create engine: %@", __func__, host);
         _sharedInstance = [[ImadocoNetworkEngine alloc] initWithHostName:host];
     });
@@ -100,7 +99,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     
     NSLog(@"userId = %d", userId);
     // リクエスト
-    MKNetworkOperation *op = [self operationWithPath:[NSString stringWithFormat:@"positions/%d", userId]
+    MKNetworkOperation *op = [self operationWithPath:[NSString stringWithFormat:@"notifications/%d", userId]
                                               params:nil
                                           httpMethod:@"GET"];
     

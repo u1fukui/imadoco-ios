@@ -10,7 +10,7 @@
 #import "HistoryViewController.h"
 #import "ImadocoNetworkEngine.h"
 #import "AppDelegate.h"
-#import "Position.h"
+#import "Notification.h"
 
 const int kAlertInputName = 1;
 const int kAlertLaunchMailer = 2;
@@ -84,15 +84,15 @@ const int kAlertLaunchMailer = 2;
             NSLog(@"%@", op.responseJSON);
             
             // レスポンス解析
-            NSMutableArray *positionArray = [NSMutableArray array];
+            NSMutableArray *notificationArray = [NSMutableArray array];
             NSArray *array = op.responseJSON;
             for (NSDictionary *dict in array) {
-                Position *pos = [[Position alloc] initWithDictionary:dict];
-                [positionArray addObject:pos];
+                Notification *notification = [[Notification alloc] initWithDictionary:dict];
+                [notificationArray addObject:notification];
             }
             
             HistoryViewController *controller = [[HistoryViewController alloc] initWithNibName:@"HistoryViewController" bundle:nil];
-            [controller showHistoryArray:positionArray];
+            [controller showNotificationArray:notificationArray];
             [self.navigationController pushViewController:controller
                                                  animated:YES];
         };

@@ -1,14 +1,14 @@
 //
-//  Position.h
+//  Notification.h
 //  imadoco
 //
-//  Created by u1 on 2013/07/09.
+//  Created by u1 on 2013/07/13.
 //  Copyright (c) 2013年 u1. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface Position : NSObject
+@interface Notification : NSObject
 
 @property (strong, nonatomic) NSString *name;
 

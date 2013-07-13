@@ -26,9 +26,12 @@
 		7796842A1789CD1700010AD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779684291789CD1700010AD7 /* QuartzCore.framework */; };
 		7796842E178C43A400010AD7 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7796842C178C43A400010AD7 /* HistoryViewController.m */; };
 		7796842F178C43A400010AD7 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7796842D178C43A400010AD7 /* HistoryViewController.xib */; };
-		77968434178C47C600010AD7 /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 77968433178C47C600010AD7 /* Position.m */; };
 		77968438178C4A9B00010AD7 /* TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77968436178C4A9B00010AD7 /* TopViewController.m */; };
 		77968439178C4A9B00010AD7 /* TopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77968437178C4A9B00010AD7 /* TopViewController.xib */; };
+		7796843D1790AC5400010AD7 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7796843B1790AC5300010AD7 /* MapViewController.m */; };
+		7796843E1790AC5400010AD7 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7796843C1790AC5400010AD7 /* MapViewController.xib */; };
+		779684401790B29500010AD7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7796843F1790B29500010AD7 /* MapKit.framework */; };
+		779684431790EA7400010AD7 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 779684421790EA7400010AD7 /* Notification.m */; };
 		779B83541787C933002DB143 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779B83531787C933002DB143 /* UIKit.framework */; };
 		779B83561787C933002DB143 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779B83551787C933002DB143 /* Foundation.framework */; };
 		779B83581787C933002DB143 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779B83571787C933002DB143 /* CoreGraphics.framework */; };
@@ -43,6 +46,8 @@
 		779B837A1787C933002DB143 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779B83551787C933002DB143 /* Foundation.framework */; };
 		779B83821787C934002DB143 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 779B83801787C934002DB143 /* InfoPlist.strings */; };
 		779B83851787C934002DB143 /* imadocoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 779B83841787C934002DB143 /* imadocoTests.m */; };
+		77FE2D391791008E006CFED6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D381791008E006CFED6 /* icon.png */; };
+		77FE2D3B17910091006CFED6 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D3A17910091006CFED6 /* icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,11 +93,15 @@
 		7796842B178C43A400010AD7 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		7796842C178C43A400010AD7 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		7796842D178C43A400010AD7 /* HistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
-		77968432178C47C600010AD7 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
-		77968433178C47C600010AD7 /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
 		77968435178C4A9B00010AD7 /* TopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopViewController.h; path = imadoco/TopViewController.h; sourceTree = SOURCE_ROOT; };
 		77968436178C4A9B00010AD7 /* TopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopViewController.m; path = imadoco/TopViewController.m; sourceTree = SOURCE_ROOT; };
 		77968437178C4A9B00010AD7 /* TopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopViewController.xib; path = imadoco/TopViewController.xib; sourceTree = SOURCE_ROOT; };
+		7796843A1790AC5300010AD7 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		7796843B1790AC5300010AD7 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		7796843C1790AC5400010AD7 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		7796843F1790B29500010AD7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		779684411790EA7400010AD7 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		779684421790EA7400010AD7 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		779B83501787C933002DB143 /* imadoco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imadoco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779B83531787C933002DB143 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		779B83551787C933002DB143 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,6 +121,8 @@
 		779B83811787C934002DB143 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		779B83831787C934002DB143 /* imadocoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imadocoTests.h; sourceTree = "<group>"; };
 		779B83841787C934002DB143 /* imadocoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = imadocoTests.m; sourceTree = "<group>"; };
+		77FE2D381791008E006CFED6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		77FE2D3A17910091006CFED6 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779684401790B29500010AD7 /* MapKit.framework in Frameworks */,
 				7796842A1789CD1700010AD7 /* QuartzCore.framework in Frameworks */,
 				779684281789CC4500010AD7 /* Security.framework in Frameworks */,
 				779684261789CC3A00010AD7 /* SystemConfiguration.framework in Frameworks */,
@@ -216,8 +228,8 @@
 		77968431178C47AD00010AD7 /* api */ = {
 			isa = PBXGroup;
 			children = (
-				77968432178C47C600010AD7 /* Position.h */,
-				77968433178C47C600010AD7 /* Position.m */,
+				779684411790EA7400010AD7 /* Notification.h */,
+				779684421790EA7400010AD7 /* Notification.m */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -225,6 +237,9 @@
 		779B83471787C933002DB143 = {
 			isa = PBXGroup;
 			children = (
+				77FE2D3A17910091006CFED6 /* icon@2x.png */,
+				77FE2D381791008E006CFED6 /* icon.png */,
+				7796843F1790B29500010AD7 /* MapKit.framework */,
 				779B83591787C933002DB143 /* imadoco */,
 				779B837D1787C934002DB143 /* imadocoTests */,
 				779B83521787C933002DB143 /* Frameworks */,
@@ -271,6 +286,9 @@
 				7796842B178C43A400010AD7 /* HistoryViewController.h */,
 				7796842C178C43A400010AD7 /* HistoryViewController.m */,
 				7796842D178C43A400010AD7 /* HistoryViewController.xib */,
+				7796843A1790AC5300010AD7 /* MapViewController.h */,
+				7796843B1790AC5300010AD7 /* MapViewController.m */,
+				7796843C1790AC5400010AD7 /* MapViewController.xib */,
 			);
 			path = imadoco;
 			sourceTree = "<group>";
@@ -386,6 +404,9 @@
 				7796841E1789C6B700010AD7 /* SVProgressHUD.bundle in Resources */,
 				7796842F178C43A400010AD7 /* HistoryViewController.xib in Resources */,
 				77968439178C4A9B00010AD7 /* TopViewController.xib in Resources */,
+				7796843E1790AC5400010AD7 /* MapViewController.xib in Resources */,
+				77FE2D391791008E006CFED6 /* icon.png in Resources */,
+				77FE2D3B17910091006CFED6 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,8 +456,9 @@
 				7796841F1789C6B700010AD7 /* SVProgressHUD.m in Sources */,
 				779684221789C72500010AD7 /* ImadocoNetworkEngine.m in Sources */,
 				7796842E178C43A400010AD7 /* HistoryViewController.m in Sources */,
-				77968434178C47C600010AD7 /* Position.m in Sources */,
 				77968438178C4A9B00010AD7 /* TopViewController.m in Sources */,
+				7796843D1790AC5400010AD7 /* MapViewController.m in Sources */,
+				779684431790EA7400010AD7 /* Notification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

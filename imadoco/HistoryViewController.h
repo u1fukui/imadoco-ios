@@ -10,6 +10,6 @@
 
 @interface HistoryViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-- (void)showHistoryArray:(NSMutableArray *)array;
+- (void)showNotificationArray:(NSMutableArray *)array;
 
 @end
