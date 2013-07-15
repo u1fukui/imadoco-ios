@@ -15,6 +15,9 @@ CLLocationCoordinate2D center;
 @interface MapViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+@property (weak, nonatomic) IBOutlet UILabel *messageSubLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
 @property (strong, nonatomic) Notification *notification;
@@ -73,6 +76,10 @@ CLLocationCoordinate2D center;
     if (self.messageLabel.text == nil) {
         self.messageLabel.text = @"メッセージなし";
     }
+    
+    //
+    self.messageSubLabel.textColor = [UIColor grayColor];
+    self.messageSubLabel.text = [NSString stringWithFormat:@"%@さんからのメッセージ：", self.notification.name];
 }
 
 
