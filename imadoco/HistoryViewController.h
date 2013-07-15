@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGORefreshTableHeaderView.h"
 
-@interface HistoryViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface HistoryViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, EGORefreshTableHeaderDelegate>
 
 - (void)showNotificationArray:(NSMutableArray *)array;
 

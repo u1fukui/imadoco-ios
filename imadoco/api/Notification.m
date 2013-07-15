@@ -14,8 +14,6 @@
 {
     self = [super init];
     if (self) {
-        NSLog(@"dict = %@", dict);
-        
         self.name = dict[@"name"];
         self.lat = [dict[@"lat"] doubleValue];
         self.lng = [dict[@"lng"] doubleValue];
