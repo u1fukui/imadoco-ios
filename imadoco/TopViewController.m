@@ -11,18 +11,24 @@
 #import "ImadocoNetworkEngine.h"
 #import "AppDelegate.h"
 #import "Notification.h"
+#import "FlatUIKit.h"
+#import "UIColor+Hex.h"
 
 const int kAlertInputName = 1;
 const int kAlertLaunchMailer = 2;
 
 @interface TopViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *sendMailButton;
+@property (weak, nonatomic) IBOutlet FUIButton *sendMailButton;
 
-@property (weak, nonatomic) IBOutlet UIButton *showHistoryButton;
+@property (weak, nonatomic) IBOutlet FUIButton *showHistoryButton;
 
 @property (strong, nonatomic) NSString *mailSubject;
 @property (strong, nonatomic) NSString *mailBody;
+@property (weak, nonatomic) IBOutlet UIView *descriptionBgTopView;
+@property (weak, nonatomic) IBOutlet UIView *descriptionBgBottomView;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UIView *adView;
 
 @end
 
@@ -41,15 +47,55 @@ const int kAlertLaunchMailer = 2;
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Top";
+    // 画面中央に表示
+    CGRect frame = self.mainView.frame;
+//    NSLog(@"height = %f", [[UIScreen mainScreen] bounds].size.height);
+//    NSLog(@"view.height = %f", self.view.frame.size.height);
+//    NSLog(@"adView.height = %f", self.adView.frame.size.height);
+//    NSLog(@"mainView.height = %f", self.mainView.frame.size.height);
+//    CGFloat diff = self.view.frame.size.height - self.adView.frame.size.height - self.mainView.frame.size.height;
     
+    CGFloat diff = [[UIScreen mainScreen] bounds].size.height - 480;
+    if (diff != 0) {
+        frame.origin.y =  diff / 2;
+    }
+    self.mainView.frame = frame;
+    
+    // 背景色
+    self.view.backgroundColor = [UIColor colorWithHex:@"#FFFFF0"];
+    
+    // ナビゲーション
+    self.navigationItem.title = @"imadoco";
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor belizeHoleColor]];
+    
+    
+    // メールを送る
+    self.sendMailButton.buttonColor = [UIColor tangerineColor];
+    self.sendMailButton.shadowColor = [UIColor carrotColor];
+    self.sendMailButton.shadowHeight = 3.0f;
+    self.sendMailButton.cornerRadius = 6.0f;
+    self.sendMailButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [self.sendMailButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.sendMailButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     [self.sendMailButton addTarget:self
                             action:@selector(onClickButton:)
                   forControlEvents:UIControlEventTouchUpInside];
     
+    // 通知履歴を見る
+    self.showHistoryButton.buttonColor = [UIColor turquoiseColor];
+    self.showHistoryButton.shadowColor = [UIColor greenSeaColor];
+    self.showHistoryButton.shadowHeight = 3.0f;
+    self.showHistoryButton.cornerRadius = 6.0f;
+    self.showHistoryButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [self.showHistoryButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [self.showHistoryButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     [self.showHistoryButton addTarget:self
                                action:@selector(onClickButton:)
                      forControlEvents:UIControlEventTouchUpInside];
+    
+    // 説明枠
+    self.descriptionBgTopView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"description_bg_top"]];
+    self.descriptionBgBottomView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"description_bg_bottom"]];
 }
 
 - (void)didReceiveMemoryWarning

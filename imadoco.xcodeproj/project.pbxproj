@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7792DD6A179A5CC000FB5991 /* description_bg_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD68179A5CC000FB5991 /* description_bg_top.png */; };
+		7792DD6B179A5CC000FB5991 /* description_bg_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD69179A5CC000FB5991 /* description_bg_top@2x.png */; };
+		7792DD6E179A647A00FB5991 /* description_bg_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD6C179A647A00FB5991 /* description_bg_bottom.png */; };
+		7792DD6F179A647A00FB5991 /* description_bg_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD6D179A647A00FB5991 /* description_bg_bottom@2x.png */; };
+		7792DD73179A67E000FB5991 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7792DD72179A67E000FB5991 /* UIColor+Hex.m */; };
 		779684141789C6B700010AD7 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 779683FB1789C6B700010AD7 /* NSAlert+MKNetworkKitAdditions.m */; };
 		779684151789C6B700010AD7 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 779683FD1789C6B700010AD7 /* NSData+MKBase64.m */; };
 		779684161789C6B700010AD7 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 779683FF1789C6B700010AD7 /* NSDate+RFC1123.m */; };
@@ -57,6 +62,35 @@
 		77FE2D5017943899006CFED6 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D4717943899006CFED6 /* grayArrow@2x.png */; };
 		77FE2D5117943899006CFED6 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D4817943899006CFED6 /* whiteArrow.png */; };
 		77FE2D5217943899006CFED6 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D4917943899006CFED6 /* whiteArrow@2x.png */; };
+		77FE2D8B179A501E006CFED6 /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D5D179A501E006CFED6 /* FUIAlertView.m */; };
+		77FE2D8C179A501E006CFED6 /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D5F179A501E006CFED6 /* FUIButton.m */; };
+		77FE2D8D179A501E006CFED6 /* FUICellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D61179A501E006CFED6 /* FUICellBackgroundView.m */; };
+		77FE2D8E179A501E006CFED6 /* FUIPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D63179A501E006CFED6 /* FUIPopoverBackgroundView.m */; };
+		77FE2D8F179A501E006CFED6 /* FUISegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D65179A501E006CFED6 /* FUISegmentedControl.m */; };
+		77FE2D90179A501E006CFED6 /* FUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D67179A501E006CFED6 /* FUISwitch.m */; };
+		77FE2D91179A501E006CFED6 /* UIBarButtonItem+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D69179A501E006CFED6 /* UIBarButtonItem+FlatUI.m */; };
+		77FE2D92179A501E006CFED6 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D6B179A501E006CFED6 /* UIColor+FlatUI.m */; };
+		77FE2D93179A501E006CFED6 /* UIFont+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D6D179A501E006CFED6 /* UIFont+FlatUI.m */; };
+		77FE2D94179A501E006CFED6 /* UIImage+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D6F179A501E006CFED6 /* UIImage+FlatUI.m */; };
+		77FE2D95179A501E006CFED6 /* UINavigationBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D71179A501E006CFED6 /* UINavigationBar+FlatUI.m */; };
+		77FE2D96179A501E006CFED6 /* UIPopoverController+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D73179A501E006CFED6 /* UIPopoverController+FlatUI.m */; };
+		77FE2D97179A501E006CFED6 /* UIProgressView+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D75179A501E006CFED6 /* UIProgressView+FlatUI.m */; };
+		77FE2D98179A501E006CFED6 /* UISlider+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D77179A501E006CFED6 /* UISlider+FlatUI.m */; };
+		77FE2D99179A501E006CFED6 /* UIStepper+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D79179A501E006CFED6 /* UIStepper+FlatUI.m */; };
+		77FE2D9A179A501E006CFED6 /* UITabBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D7B179A501E006CFED6 /* UITabBar+FlatUI.m */; };
+		77FE2D9B179A501E006CFED6 /* UITableViewCell+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D7D179A501E006CFED6 /* UITableViewCell+FlatUI.m */; };
+		77FE2D9C179A501E006CFED6 /* UIToolbar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 77FE2D7F179A501E006CFED6 /* UIToolbar+FlatUI.m */; };
+		77FE2D9D179A501E006CFED6 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D81179A501E006CFED6 /* Lato-Black.ttf */; };
+		77FE2D9E179A501E006CFED6 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D82179A501E006CFED6 /* Lato-BlackItalic.ttf */; };
+		77FE2D9F179A501E006CFED6 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D83179A501E006CFED6 /* Lato-Bold.ttf */; };
+		77FE2DA0179A501E006CFED6 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D84179A501E006CFED6 /* Lato-BoldItalic.ttf */; };
+		77FE2DA1179A501E006CFED6 /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D85179A501E006CFED6 /* Lato-Hairline.ttf */; };
+		77FE2DA2179A501E006CFED6 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D86179A501E006CFED6 /* Lato-HairlineItalic.ttf */; };
+		77FE2DA3179A501E006CFED6 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D87179A501E006CFED6 /* Lato-Italic.ttf */; };
+		77FE2DA4179A501E006CFED6 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D88179A501E006CFED6 /* Lato-Light.ttf */; };
+		77FE2DA5179A501E006CFED6 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D89179A501E006CFED6 /* Lato-LightItalic.ttf */; };
+		77FE2DA6179A501E006CFED6 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77FE2D8A179A501E006CFED6 /* Lato-Regular.ttf */; };
+		77FE2DA8179A5130006CFED6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77FE2DA7179A5130006CFED6 /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +104,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7792DD68179A5CC000FB5991 /* description_bg_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description_bg_top.png; sourceTree = "<group>"; };
+		7792DD69179A5CC000FB5991 /* description_bg_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "description_bg_top@2x.png"; sourceTree = "<group>"; };
+		7792DD6C179A647A00FB5991 /* description_bg_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description_bg_bottom.png; sourceTree = "<group>"; };
+		7792DD6D179A647A00FB5991 /* description_bg_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "description_bg_bottom@2x.png"; sourceTree = "<group>"; };
+		7792DD71179A67E000FB5991 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		7792DD72179A67E000FB5991 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		779683FB1789C6B700010AD7 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		779683FC1789C6B700010AD7 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
 		779683FD1789C6B700010AD7 /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
@@ -142,6 +182,54 @@
 		77FE2D4717943899006CFED6 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
 		77FE2D4817943899006CFED6 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		77FE2D4917943899006CFED6 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		77FE2D5B179A501E006CFED6 /* FlatUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatUIKit.h; sourceTree = "<group>"; };
+		77FE2D5C179A501E006CFED6 /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
+		77FE2D5D179A501E006CFED6 /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
+		77FE2D5E179A501E006CFED6 /* FUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIButton.h; sourceTree = "<group>"; };
+		77FE2D5F179A501E006CFED6 /* FUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIButton.m; sourceTree = "<group>"; };
+		77FE2D60179A501E006CFED6 /* FUICellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUICellBackgroundView.h; sourceTree = "<group>"; };
+		77FE2D61179A501E006CFED6 /* FUICellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUICellBackgroundView.m; sourceTree = "<group>"; };
+		77FE2D62179A501E006CFED6 /* FUIPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIPopoverBackgroundView.h; sourceTree = "<group>"; };
+		77FE2D63179A501E006CFED6 /* FUIPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIPopoverBackgroundView.m; sourceTree = "<group>"; };
+		77FE2D64179A501E006CFED6 /* FUISegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUISegmentedControl.h; sourceTree = "<group>"; };
+		77FE2D65179A501E006CFED6 /* FUISegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUISegmentedControl.m; sourceTree = "<group>"; };
+		77FE2D66179A501E006CFED6 /* FUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUISwitch.h; sourceTree = "<group>"; };
+		77FE2D67179A501E006CFED6 /* FUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUISwitch.m; sourceTree = "<group>"; };
+		77FE2D68179A501E006CFED6 /* UIBarButtonItem+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D69179A501E006CFED6 /* UIBarButtonItem+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D6A179A501E006CFED6 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D6B179A501E006CFED6 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D6C179A501E006CFED6 /* UIFont+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D6D179A501E006CFED6 /* UIFont+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D6E179A501E006CFED6 /* UIImage+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D6F179A501E006CFED6 /* UIImage+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D70179A501E006CFED6 /* UINavigationBar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D71179A501E006CFED6 /* UINavigationBar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D72179A501E006CFED6 /* UIPopoverController+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPopoverController+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D73179A501E006CFED6 /* UIPopoverController+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPopoverController+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D74179A501E006CFED6 /* UIProgressView+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D75179A501E006CFED6 /* UIProgressView+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D76179A501E006CFED6 /* UISlider+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISlider+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D77179A501E006CFED6 /* UISlider+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISlider+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D78179A501E006CFED6 /* UIStepper+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStepper+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D79179A501E006CFED6 /* UIStepper+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStepper+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D7A179A501E006CFED6 /* UITabBar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D7B179A501E006CFED6 /* UITabBar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D7C179A501E006CFED6 /* UITableViewCell+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D7D179A501E006CFED6 /* UITableViewCell+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D7E179A501E006CFED6 /* UIToolbar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+FlatUI.h"; sourceTree = "<group>"; };
+		77FE2D7F179A501E006CFED6 /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
+		77FE2D81179A501E006CFED6 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		77FE2D82179A501E006CFED6 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		77FE2D83179A501E006CFED6 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		77FE2D84179A501E006CFED6 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		77FE2D85179A501E006CFED6 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
+		77FE2D86179A501E006CFED6 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
+		77FE2D87179A501E006CFED6 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		77FE2D88179A501E006CFED6 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		77FE2D89179A501E006CFED6 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		77FE2D8A179A501E006CFED6 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		77FE2DA7179A5130006CFED6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77FE2DA8179A5130006CFED6 /* CoreText.framework in Frameworks */,
 				779684401790B29500010AD7 /* MapKit.framework in Frameworks */,
 				7796842A1789CD1700010AD7 /* QuartzCore.framework in Frameworks */,
 				779684281789CC4500010AD7 /* Security.framework in Frameworks */,
@@ -173,6 +262,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7792DD70179A67E000FB5991 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				7792DD71179A67E000FB5991 /* UIColor+Hex.h */,
+				7792DD72179A67E000FB5991 /* UIColor+Hex.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		779683F41789C66C00010AD7 /* network */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +283,7 @@
 		779683F81789C6B700010AD7 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				77FE2D58179A501E006CFED6 /* FlatUIKit */,
 				77FE2D3C17943899006CFED6 /* EGOTableViewPullRefresh */,
 				779683F91789C6B700010AD7 /* MKNetworkKit */,
 				779684101789C6B700010AD7 /* SVProgressHUD */,
@@ -259,7 +358,6 @@
 			children = (
 				77FE2D3A17910091006CFED6 /* icon@2x.png */,
 				77FE2D381791008E006CFED6 /* icon.png */,
-				7796843F1790B29500010AD7 /* MapKit.framework */,
 				779B83591787C933002DB143 /* imadoco */,
 				779B837D1787C934002DB143 /* imadocoTests */,
 				779B83521787C933002DB143 /* Frameworks */,
@@ -279,6 +377,8 @@
 		779B83521787C933002DB143 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77FE2DA7179A5130006CFED6 /* CoreText.framework */,
+				7796843F1790B29500010AD7 /* MapKit.framework */,
 				779684291789CD1700010AD7 /* QuartzCore.framework */,
 				779684271789CC4500010AD7 /* Security.framework */,
 				779684251789CC3A00010AD7 /* SystemConfiguration.framework */,
@@ -294,6 +394,8 @@
 		779B83591787C933002DB143 /* imadoco */ = {
 			isa = PBXGroup;
 			children = (
+				7792DD70179A67E000FB5991 /* util */,
+				77FE2D53179A2E0D006CFED6 /* image */,
 				77968431178C47AD00010AD7 /* api */,
 				779B835A1787C933002DB143 /* Supporting Files */,
 				779683F81789C6B700010AD7 /* lib */,
@@ -387,6 +489,95 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		77FE2D53179A2E0D006CFED6 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				7792DD6C179A647A00FB5991 /* description_bg_bottom.png */,
+				7792DD6D179A647A00FB5991 /* description_bg_bottom@2x.png */,
+				7792DD68179A5CC000FB5991 /* description_bg_top.png */,
+				7792DD69179A5CC000FB5991 /* description_bg_top@2x.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		77FE2D58179A501E006CFED6 /* FlatUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				77FE2D59179A501E006CFED6 /* Classes */,
+				77FE2D80179A501E006CFED6 /* Resources */,
+			);
+			path = FlatUIKit;
+			sourceTree = "<group>";
+		};
+		77FE2D59179A501E006CFED6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				77FE2D5A179A501E006CFED6 /* ios */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		77FE2D5A179A501E006CFED6 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				77FE2D5B179A501E006CFED6 /* FlatUIKit.h */,
+				77FE2D5C179A501E006CFED6 /* FUIAlertView.h */,
+				77FE2D5D179A501E006CFED6 /* FUIAlertView.m */,
+				77FE2D5E179A501E006CFED6 /* FUIButton.h */,
+				77FE2D5F179A501E006CFED6 /* FUIButton.m */,
+				77FE2D60179A501E006CFED6 /* FUICellBackgroundView.h */,
+				77FE2D61179A501E006CFED6 /* FUICellBackgroundView.m */,
+				77FE2D62179A501E006CFED6 /* FUIPopoverBackgroundView.h */,
+				77FE2D63179A501E006CFED6 /* FUIPopoverBackgroundView.m */,
+				77FE2D64179A501E006CFED6 /* FUISegmentedControl.h */,
+				77FE2D65179A501E006CFED6 /* FUISegmentedControl.m */,
+				77FE2D66179A501E006CFED6 /* FUISwitch.h */,
+				77FE2D67179A501E006CFED6 /* FUISwitch.m */,
+				77FE2D68179A501E006CFED6 /* UIBarButtonItem+FlatUI.h */,
+				77FE2D69179A501E006CFED6 /* UIBarButtonItem+FlatUI.m */,
+				77FE2D6A179A501E006CFED6 /* UIColor+FlatUI.h */,
+				77FE2D6B179A501E006CFED6 /* UIColor+FlatUI.m */,
+				77FE2D6C179A501E006CFED6 /* UIFont+FlatUI.h */,
+				77FE2D6D179A501E006CFED6 /* UIFont+FlatUI.m */,
+				77FE2D6E179A501E006CFED6 /* UIImage+FlatUI.h */,
+				77FE2D6F179A501E006CFED6 /* UIImage+FlatUI.m */,
+				77FE2D70179A501E006CFED6 /* UINavigationBar+FlatUI.h */,
+				77FE2D71179A501E006CFED6 /* UINavigationBar+FlatUI.m */,
+				77FE2D72179A501E006CFED6 /* UIPopoverController+FlatUI.h */,
+				77FE2D73179A501E006CFED6 /* UIPopoverController+FlatUI.m */,
+				77FE2D74179A501E006CFED6 /* UIProgressView+FlatUI.h */,
+				77FE2D75179A501E006CFED6 /* UIProgressView+FlatUI.m */,
+				77FE2D76179A501E006CFED6 /* UISlider+FlatUI.h */,
+				77FE2D77179A501E006CFED6 /* UISlider+FlatUI.m */,
+				77FE2D78179A501E006CFED6 /* UIStepper+FlatUI.h */,
+				77FE2D79179A501E006CFED6 /* UIStepper+FlatUI.m */,
+				77FE2D7A179A501E006CFED6 /* UITabBar+FlatUI.h */,
+				77FE2D7B179A501E006CFED6 /* UITabBar+FlatUI.m */,
+				77FE2D7C179A501E006CFED6 /* UITableViewCell+FlatUI.h */,
+				77FE2D7D179A501E006CFED6 /* UITableViewCell+FlatUI.m */,
+				77FE2D7E179A501E006CFED6 /* UIToolbar+FlatUI.h */,
+				77FE2D7F179A501E006CFED6 /* UIToolbar+FlatUI.m */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		77FE2D80179A501E006CFED6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				77FE2D81179A501E006CFED6 /* Lato-Black.ttf */,
+				77FE2D82179A501E006CFED6 /* Lato-BlackItalic.ttf */,
+				77FE2D83179A501E006CFED6 /* Lato-Bold.ttf */,
+				77FE2D84179A501E006CFED6 /* Lato-BoldItalic.ttf */,
+				77FE2D85179A501E006CFED6 /* Lato-Hairline.ttf */,
+				77FE2D86179A501E006CFED6 /* Lato-HairlineItalic.ttf */,
+				77FE2D87179A501E006CFED6 /* Lato-Italic.ttf */,
+				77FE2D88179A501E006CFED6 /* Lato-Light.ttf */,
+				77FE2D89179A501E006CFED6 /* Lato-LightItalic.ttf */,
+				77FE2D8A179A501E006CFED6 /* Lato-Regular.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -476,6 +667,20 @@
 				77FE2D5017943899006CFED6 /* grayArrow@2x.png in Resources */,
 				77FE2D5117943899006CFED6 /* whiteArrow.png in Resources */,
 				77FE2D5217943899006CFED6 /* whiteArrow@2x.png in Resources */,
+				77FE2D9D179A501E006CFED6 /* Lato-Black.ttf in Resources */,
+				77FE2D9E179A501E006CFED6 /* Lato-BlackItalic.ttf in Resources */,
+				77FE2D9F179A501E006CFED6 /* Lato-Bold.ttf in Resources */,
+				77FE2DA0179A501E006CFED6 /* Lato-BoldItalic.ttf in Resources */,
+				77FE2DA1179A501E006CFED6 /* Lato-Hairline.ttf in Resources */,
+				77FE2DA2179A501E006CFED6 /* Lato-HairlineItalic.ttf in Resources */,
+				77FE2DA3179A501E006CFED6 /* Lato-Italic.ttf in Resources */,
+				77FE2DA4179A501E006CFED6 /* Lato-Light.ttf in Resources */,
+				77FE2DA5179A501E006CFED6 /* Lato-LightItalic.ttf in Resources */,
+				77FE2DA6179A501E006CFED6 /* Lato-Regular.ttf in Resources */,
+				7792DD6A179A5CC000FB5991 /* description_bg_top.png in Resources */,
+				7792DD6B179A5CC000FB5991 /* description_bg_top@2x.png in Resources */,
+				7792DD6E179A647A00FB5991 /* description_bg_bottom.png in Resources */,
+				7792DD6F179A647A00FB5991 /* description_bg_bottom@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +734,25 @@
 				7796843D1790AC5400010AD7 /* MapViewController.m in Sources */,
 				779684431790EA7400010AD7 /* Notification.m in Sources */,
 				77FE2D4A17943899006CFED6 /* EGORefreshTableHeaderView.m in Sources */,
+				77FE2D8B179A501E006CFED6 /* FUIAlertView.m in Sources */,
+				77FE2D8C179A501E006CFED6 /* FUIButton.m in Sources */,
+				77FE2D8D179A501E006CFED6 /* FUICellBackgroundView.m in Sources */,
+				77FE2D8E179A501E006CFED6 /* FUIPopoverBackgroundView.m in Sources */,
+				77FE2D8F179A501E006CFED6 /* FUISegmentedControl.m in Sources */,
+				77FE2D90179A501E006CFED6 /* FUISwitch.m in Sources */,
+				77FE2D91179A501E006CFED6 /* UIBarButtonItem+FlatUI.m in Sources */,
+				77FE2D92179A501E006CFED6 /* UIColor+FlatUI.m in Sources */,
+				77FE2D93179A501E006CFED6 /* UIFont+FlatUI.m in Sources */,
+				77FE2D94179A501E006CFED6 /* UIImage+FlatUI.m in Sources */,
+				77FE2D95179A501E006CFED6 /* UINavigationBar+FlatUI.m in Sources */,
+				77FE2D96179A501E006CFED6 /* UIPopoverController+FlatUI.m in Sources */,
+				77FE2D97179A501E006CFED6 /* UIProgressView+FlatUI.m in Sources */,
+				77FE2D98179A501E006CFED6 /* UISlider+FlatUI.m in Sources */,
+				77FE2D99179A501E006CFED6 /* UIStepper+FlatUI.m in Sources */,
+				77FE2D9A179A501E006CFED6 /* UITabBar+FlatUI.m in Sources */,
+				77FE2D9B179A501E006CFED6 /* UITableViewCell+FlatUI.m in Sources */,
+				77FE2D9C179A501E006CFED6 /* UIToolbar+FlatUI.m in Sources */,
+				7792DD73179A67E000FB5991 /* UIColor+Hex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
