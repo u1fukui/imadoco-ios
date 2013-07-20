@@ -11,6 +11,9 @@
 #import "MapViewController.h"
 #import "ImadocoNetworkEngine.h"
 #import "AppDelegate.h"
+#import "NotificationCell.h"
+#import "UIColor+Hex.h"
+#import "FlatUIKit.h"
 
 @interface HistoryViewController ()
 
@@ -41,10 +44,21 @@
 {
     [super viewDidLoad];
     
+    // ナビゲーション
     self.navigationItem.title = @"通知履歴";
+    
+    [UIBarButtonItem configureFlatButtonsWithColor:[UIColor colorWithHex:@"125E8B"]
+                                  highlightedColor:[UIColor midnightBlueColor]
+                                      cornerRadius:3];
+    
+    
+    // テーブル
     self.historyTableView.dataSource = self;
     self.historyTableView.delegate = self;
+    //self.historyTableView.backgroundColor = [UIColor colorWithHex:@"#FFFFF0"];
+    self.view.backgroundColor = [UIColor colorWithHex:@"#F6F6F6"];
     
+    // PullToRefresh
     if (self.refreshHeaderView == nil) {
         // 更新ビューのサイズとデリゲートを指定する
 		EGORefreshTableHeaderView *view =
@@ -97,17 +111,12 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NotificationCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]
-                initWithStyle:UITableViewCellStyleSubtitle
-                reuseIdentifier:CellIdentifier];
+        cell = [[NotificationCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                       reuseIdentifier:CellIdentifier];
     }
-    
-    
-    Notification *notification = [self.notificationArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@さんからの通知", notification.name];
-    cell.detailTextLabel.text = notification.updatedAt;
+    [cell setNotificationInfo:[self.notificationArray objectAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -122,7 +131,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return [NotificationCell cellHeight];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -62,7 +62,8 @@ const int kAlertLaunchMailer = 2;
     self.mainView.frame = frame;
     
     // 背景色
-    self.view.backgroundColor = [UIColor colorWithHex:@"#FFFFF0"];
+    //self.view.backgroundColor = [UIColor colorWithHex:@"#FFFFF0"];
+    self.view.backgroundColor = [UIColor colorWithHex:@"#F6F6F6"];
     
     // ナビゲーション
     self.navigationItem.title = @"imadoco";

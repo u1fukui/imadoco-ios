@@ -12,6 +12,11 @@
 		7792DD6E179A647A00FB5991 /* description_bg_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD6C179A647A00FB5991 /* description_bg_bottom.png */; };
 		7792DD6F179A647A00FB5991 /* description_bg_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD6D179A647A00FB5991 /* description_bg_bottom@2x.png */; };
 		7792DD73179A67E000FB5991 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7792DD72179A67E000FB5991 /* UIColor+Hex.m */; };
+		7792DD77179AA4B100FB5991 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7792DD76179AA4B100FB5991 /* NotificationCell.m */; };
+		7792DD7C179AD24700FB5991 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD78179AD24700FB5991 /* email.png */; };
+		7792DD7D179AD24700FB5991 /* email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD79179AD24700FB5991 /* email@2x.png */; };
+		7792DD7E179AD24700FB5991 /* location-pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD7A179AD24700FB5991 /* location-pointer.png */; };
+		7792DD7F179AD24700FB5991 /* location-pointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD7B179AD24700FB5991 /* location-pointer@2x.png */; };
 		779684141789C6B700010AD7 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 779683FB1789C6B700010AD7 /* NSAlert+MKNetworkKitAdditions.m */; };
 		779684151789C6B700010AD7 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 779683FD1789C6B700010AD7 /* NSData+MKBase64.m */; };
 		779684161789C6B700010AD7 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 779683FF1789C6B700010AD7 /* NSDate+RFC1123.m */; };
@@ -110,6 +115,12 @@
 		7792DD6D179A647A00FB5991 /* description_bg_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "description_bg_bottom@2x.png"; sourceTree = "<group>"; };
 		7792DD71179A67E000FB5991 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		7792DD72179A67E000FB5991 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		7792DD75179AA4B100FB5991 /* NotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
+		7792DD76179AA4B100FB5991 /* NotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
+		7792DD78179AD24700FB5991 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
+		7792DD79179AD24700FB5991 /* email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email@2x.png"; sourceTree = "<group>"; };
+		7792DD7A179AD24700FB5991 /* location-pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-pointer.png"; sourceTree = "<group>"; };
+		7792DD7B179AD24700FB5991 /* location-pointer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-pointer@2x.png"; sourceTree = "<group>"; };
 		779683FB1789C6B700010AD7 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		779683FC1789C6B700010AD7 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
 		779683FD1789C6B700010AD7 /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
@@ -271,6 +282,15 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		7792DD74179AA46A00FB5991 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7792DD75179AA4B100FB5991 /* NotificationCell.h */,
+				7792DD76179AA4B100FB5991 /* NotificationCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		779683F41789C66C00010AD7 /* network */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +414,7 @@
 		779B83591787C933002DB143 /* imadoco */ = {
 			isa = PBXGroup;
 			children = (
+				7792DD74179AA46A00FB5991 /* view */,
 				7792DD70179A67E000FB5991 /* util */,
 				77FE2D53179A2E0D006CFED6 /* image */,
 				77968431178C47AD00010AD7 /* api */,
@@ -492,6 +513,10 @@
 		77FE2D53179A2E0D006CFED6 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				7792DD78179AD24700FB5991 /* email.png */,
+				7792DD79179AD24700FB5991 /* email@2x.png */,
+				7792DD7A179AD24700FB5991 /* location-pointer.png */,
+				7792DD7B179AD24700FB5991 /* location-pointer@2x.png */,
 				7792DD6C179A647A00FB5991 /* description_bg_bottom.png */,
 				7792DD6D179A647A00FB5991 /* description_bg_bottom@2x.png */,
 				7792DD68179A5CC000FB5991 /* description_bg_top.png */,
@@ -681,6 +706,10 @@
 				7792DD6B179A5CC000FB5991 /* description_bg_top@2x.png in Resources */,
 				7792DD6E179A647A00FB5991 /* description_bg_bottom.png in Resources */,
 				7792DD6F179A647A00FB5991 /* description_bg_bottom@2x.png in Resources */,
+				7792DD7C179AD24700FB5991 /* email.png in Resources */,
+				7792DD7D179AD24700FB5991 /* email@2x.png in Resources */,
+				7792DD7E179AD24700FB5991 /* location-pointer.png in Resources */,
+				7792DD7F179AD24700FB5991 /* location-pointer@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +782,7 @@
 				77FE2D9B179A501E006CFED6 /* UITableViewCell+FlatUI.m in Sources */,
 				77FE2D9C179A501E006CFED6 /* UIToolbar+FlatUI.m in Sources */,
 				7792DD73179A67E000FB5991 /* UIColor+Hex.m in Sources */,
+				7792DD77179AA4B100FB5991 /* NotificationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
