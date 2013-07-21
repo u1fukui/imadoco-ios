@@ -10,6 +10,7 @@
 
 #import "TopViewController.h"
 #import "ImadocoNetworkEngine.h"
+#import "NotificationManager.h"
 
 @implementation AppDelegate
 
@@ -34,6 +35,9 @@ void uncaughtExceptionHandler(NSException *exception)
     
     // PUSH通知登録
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
+    
+    // 通知の確認状態を確認
+    [[NotificationManager sharedManager] load];
     
     return YES;
 }

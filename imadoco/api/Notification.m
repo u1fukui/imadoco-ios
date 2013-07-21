@@ -14,6 +14,7 @@
 {
     self = [super init];
     if (self) {
+        self.id = [dict[@"id"] intValue];
         self.name = dict[@"name"];
         self.lat = [dict[@"lat"] doubleValue];
         self.lng = [dict[@"lng"] doubleValue];

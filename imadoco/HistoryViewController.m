@@ -14,6 +14,7 @@
 #import "NotificationCell.h"
 #import "UIColor+Hex.h"
 #import "FlatUIKit.h"
+#import "NotificationManager.h"
 
 @interface HistoryViewController ()
 
@@ -87,6 +88,9 @@
 {
     [super viewWillAppear:animated];
     
+    //
+    [self.historyTableView reloadData];
+    
     // バッジを消す
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
@@ -142,6 +146,7 @@
                                                                          bundle:nil];
         }
         [self.mapViewController showNotification:notification];
+        [[NotificationManager sharedManager] readNotification:notification.id];
         [self.navigationController pushViewController:self.mapViewController animated:YES];
     }
 }

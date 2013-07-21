@@ -10,6 +10,8 @@
 
 @interface Notification : NSObject
 
+@property (assign, nonatomic) int id;
+
 @property (strong, nonatomic) NSString *name;
 
 @property (assign, nonatomic) double lat;

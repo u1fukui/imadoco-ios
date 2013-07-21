@@ -9,12 +9,14 @@
 #import "NotificationCell.h"
 #import "Notification.h"
 #import "FlatUIKit.h"
+#import "NotificationManager.h"
 
 @interface NotificationCell()
 
 @property (strong, nonatomic) UILabel *createdTimeLabel;
 @property (strong, nonatomic) UILabel *userNameLabel;
 @property (strong, nonatomic) UILabel *messageLabel;
+@property (strong, nonatomic) UIImageView *unreadIconView;
 
 @end
 
@@ -29,7 +31,7 @@
         // 名前
         self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f,
                                                                        3.0f,
-                                                                       150.0f,
+                                                                       220.0f,
                                                                        20.0f)];
         self.userNameLabel.backgroundColor = [UIColor clearColor];
         self.userNameLabel.font = [UIFont boldSystemFontOfSize:16.0f];
@@ -38,7 +40,7 @@
         // メッセージ
         self.messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f,
                                                                       24.0f,
-                                                                      150.0f,
+                                                                      260.0f,
                                                                       20.0f)];
         self.messageLabel.backgroundColor = [UIColor clearColor];
         self.messageLabel.font = [UIFont systemFontOfSize:14.0f];
@@ -54,6 +56,13 @@
         self.createdTimeLabel.font = [UIFont systemFontOfSize:12.0f];
         self.createdTimeLabel.textColor = [UIColor greenSeaColor];
         [self addSubview:self.createdTimeLabel];
+        
+        // Newアイコン
+        self.unreadIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"new"]];
+        CGRect frame = self.unreadIconView.frame;
+        frame.origin = CGPointMake(250.0f, 3.0f);
+        self.unreadIconView.frame = frame;
+        [self addSubview:self.unreadIconView];
         
         // アクセサリ
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -85,6 +94,15 @@
     self.userNameLabel.text = notification.name;
     self.messageLabel.text = notification.message;
     self.createdTimeLabel.text = notification.updatedAt;
+    
+    if ([[NotificationManager sharedManager] isRead:notification.id]) {
+        self.unreadIconView.hidden = YES;
+    } else {
+        self.unreadIconView.hidden = NO;
+    }
+    
+//    self.userNameLabel.text = @"あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや";
+//    self.messageLabel.text = @"あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや";
 }
 
 @end
