@@ -51,7 +51,6 @@
                                   highlightedColor:[UIColor midnightBlueColor]
                                       cornerRadius:3];
     
-    
     // テーブル
     self.historyTableView.dataSource = self;
     self.historyTableView.delegate = self;

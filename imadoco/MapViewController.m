@@ -9,16 +9,19 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 #import "Notification.h"
+#import "FlatUIKit.h"
 
 CLLocationCoordinate2D center;
 
 @interface MapViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *createdTimeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *messageSubLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UIView *messageBgView;
 
 @property (strong, nonatomic) Notification *notification;
 
@@ -30,7 +33,6 @@ CLLocationCoordinate2D center;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -38,13 +40,22 @@ CLLocationCoordinate2D center;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
+    // 地図
     MKCoordinateRegion cr = self.mapView.region;
     cr.span.latitudeDelta = 0.01;
     cr.span.longitudeDelta = 0.01;
     [self.mapView setRegion:cr animated:NO];
     
+    // 受信日時
+    self.createdTimeLabel.backgroundColor = [UIColor clearColor];
+    self.createdTimeLabel.textColor = [UIColor greenSeaColor];
+    
+    // 名前
+    self.messageSubLabel.backgroundColor = [UIColor clearColor];
+    
+    // メッセージ
+    self.messageLabel.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,7 +69,7 @@ CLLocationCoordinate2D center;
     [super viewWillAppear:animated];
     
     // タイトル
-    self.navigationItem.title = [NSString stringWithFormat:@"%@さんはここ！", self.notification.name];
+    self.navigationItem.title = @"位置確認";
     
     // 地図の表示場所を設定
     CLLocationCoordinate2D center;
@@ -71,15 +82,20 @@ CLLocationCoordinate2D center;
     pin.coordinate = center;
     [_mapView addAnnotation:pin];
     
-    // 相手からのメッセージ
+    
+    // 相手からのメッセージ背景
+    self.messageBgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"message_bg"]];
+    
+    // 相手からのメッセージ文言
     self.messageLabel.text = self.notification.message;
-    if (self.messageLabel.text == nil) {
+    //self.messageLabel.text = @"あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや";
+    if (self.messageLabel.text.length == 0) {
         self.messageLabel.text = @"メッセージなし";
     }
     
-    //
-    self.messageSubLabel.textColor = [UIColor grayColor];
-    self.messageSubLabel.text = [NSString stringWithFormat:@"%@さんからのメッセージ：", self.notification.name];
+    self.messageSubLabel.text = [NSString stringWithFormat:@"%@さんからのメッセージ", self.notification.name];
+    
+    self.createdTimeLabel.text = self.notification.updatedAt;
 }
 
 
