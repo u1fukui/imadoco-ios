@@ -19,9 +19,24 @@
         self.lat = [dict[@"lat"] doubleValue];
         self.lng = [dict[@"lng"] doubleValue];
         self.message = dict[@"message"];
-        self.updatedAt = dict[@"created_at"];
+        
+        self.updatedAt = [self formatDateString:dict[@"created_at"]];
+        
+        NSLog(@"updatedAt = %@", self.updatedAt);
     }
     return self;
 }
+
+
+// 日付の書式変換
+- (NSString *)formatDateString:(NSString *)string
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZ";
+    NSDate *date = [dateFormatter dateFromString:string];
+    dateFormatter.dateFormat = @"yyyy/MM/dd HH:mm";
+    return [dateFormatter stringFromDate:date];
+}
+
 
 @end
