@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NADView.h"
 
-@interface TopViewController : UIViewController<UIAlertViewDelegate>
+@interface TopViewController : UIViewController<UIAlertViewDelegate, UITextFieldDelegate, NADViewDelegate>
 
 @end

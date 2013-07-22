@@ -13,6 +13,8 @@
 #import "Notification.h"
 #import "FlatUIKit.h"
 #import "UIColor+Hex.h"
+#import "NSString+Validation.h"
+#import "InfoPlistProperty.h"
 
 const int kAlertInputName = 1;
 const int kAlertLaunchMailer = 2;
@@ -29,6 +31,8 @@ const int kAlertLaunchMailer = 2;
 @property (weak, nonatomic) IBOutlet UIView *descriptionBgBottomView;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UIView *adView;
+
+@property (strong, nonatomic) NADView *nadView;
 
 @end
 
@@ -49,12 +53,6 @@ const int kAlertLaunchMailer = 2;
     
     // 画面中央に表示
     CGRect frame = self.mainView.frame;
-//    NSLog(@"height = %f", [[UIScreen mainScreen] bounds].size.height);
-//    NSLog(@"view.height = %f", self.view.frame.size.height);
-//    NSLog(@"adView.height = %f", self.adView.frame.size.height);
-//    NSLog(@"mainView.height = %f", self.mainView.frame.size.height);
-//    CGFloat diff = self.view.frame.size.height - self.adView.frame.size.height - self.mainView.frame.size.height;
-    
     CGFloat diff = [[UIScreen mainScreen] bounds].size.height - 480;
     if (diff != 0) {
         frame.origin.y =  diff / 2;
@@ -97,12 +95,39 @@ const int kAlertLaunchMailer = 2;
     // 説明枠
     self.descriptionBgTopView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"description_bg_top"]];
     self.descriptionBgBottomView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"description_bg_bottom"]];
+    
+    // 広告
+    self.nadView = [[NADView alloc] initWithFrame:CGRectMake(0,0,
+                                                             NAD_ADVIEW_SIZE_320x50.width, NAD_ADVIEW_SIZE_320x50.height )];
+    [self.nadView setIsOutputLog:NO];
+    [self.nadView setNendID:[[[NSBundle mainBundle] infoDictionary] objectForKey:kNendId]
+                     spotID:[[[NSBundle mainBundle] infoDictionary] objectForKey:kNendSpotId]];
+    [self.nadView setDelegate:(id)self];
+    [self.adView addSubview:self.nadView];
+    [self.nadView load];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) dealloc {
+    [self.nadView setDelegate:nil];
+    self.nadView = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.nadView resume];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.nadView pause];
 }
 
 #pragma mark - イベント
@@ -116,11 +141,12 @@ const int kAlertLaunchMailer = 2;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"名前の登録"
                                                         message:@"送り先の名前を入力して下さい"
                                                        delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                              otherButtonTitles:@"Ok", nil];
+                                              cancelButtonTitle:@"キャンセル"
+                                              otherButtonTitles:@"OK", nil];
     
         alert.tag = kAlertInputName;
         [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];//１行で実装
+        [alert textFieldAtIndex:0].delegate = self;
         [alert show];
         
     } else if (self.showHistoryButton) {
@@ -160,7 +186,8 @@ const int kAlertLaunchMailer = 2;
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
 {
     NSString *inputText = [[alertView textFieldAtIndex:0] text];
-    if([inputText length] >= 1) {
+    int length = [inputText length];
+    if(length >= 1 && length <= 10 && ![NSString isBlank:inputText]) {
         return YES;
     } else {
         return NO;
@@ -183,6 +210,8 @@ const int kAlertLaunchMailer = 2;
             break;
     }
 }
+
+
 
 #pragma mark - メールを送る
 
@@ -230,6 +259,18 @@ const int kAlertLaunchMailer = 2;
     
     self.mailSubject = nil;
     self.mailBody = nil;
+}
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    int maxInputLength = 10;
+    NSMutableString *str = [textField.text mutableCopy];
+    [str replaceCharactersInRange:range withString:string];
+    if ([str length] > maxInputLength) {
+        return NO;
+    }
+    return YES;
 }
 
 @end

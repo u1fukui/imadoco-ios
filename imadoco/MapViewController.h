@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NADView.h"
 
 @class Notification;
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController<NADViewDelegate>
 
 - (void)showNotification:(Notification *)notification;
 

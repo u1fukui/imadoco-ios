@@ -15,6 +15,7 @@
 #import "UIColor+Hex.h"
 #import "FlatUIKit.h"
 #import "NotificationManager.h"
+#import "InfoPlistProperty.h"
 
 @interface HistoryViewController ()
 
@@ -27,6 +28,9 @@
 @property (strong, nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 
 @property (assign, nonatomic) BOOL isReloading;
+
+@property (strong, nonatomic) NADView *nadView;
+@property (weak, nonatomic) IBOutlet UIView *adView;
 
 @end
 
@@ -76,6 +80,16 @@
 	
     // 最終更新日付を記録
 	[self.refreshHeaderView refreshLastUpdatedDate];
+    
+    // 広告
+    self.nadView = [[NADView alloc] initWithFrame:CGRectMake(0,0,
+                                                             NAD_ADVIEW_SIZE_320x50.width, NAD_ADVIEW_SIZE_320x50.height )];
+    [self.nadView setIsOutputLog:NO];
+    [self.nadView setNendID:[[[NSBundle mainBundle] infoDictionary] objectForKey:kNendId]
+                     spotID:[[[NSBundle mainBundle] infoDictionary] objectForKey:kNendSpotId]];
+    [self.nadView setDelegate:(id)self];
+    [self.adView addSubview:self.nadView];
+    [self.nadView load];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,16 +98,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) dealloc {
+    [self.nadView setDelegate:nil];
+    self.nadView = nil;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    //
+    // 広告
+    [self.nadView resume];
+    
+    // 更新
     [self.historyTableView reloadData];
     
     // バッジを消す
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.nadView pause];
+}
+
 
 #pragma mark - public method
 

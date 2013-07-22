@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "Notification.h"
 #import "FlatUIKit.h"
+#import "InfoPlistProperty.h"
 
 CLLocationCoordinate2D center;
 
@@ -24,6 +25,9 @@ CLLocationCoordinate2D center;
 @property (weak, nonatomic) IBOutlet UIView *messageBgView;
 
 @property (strong, nonatomic) Notification *notification;
+
+@property (strong, nonatomic) NADView *nadView;
+@property (weak, nonatomic) IBOutlet UIView *adView;
 
 @end
 
@@ -41,6 +45,9 @@ CLLocationCoordinate2D center;
 {
     [super viewDidLoad];
     
+    // タイトル
+    self.navigationItem.title = @"位置確認";
+    
     // 地図
     MKCoordinateRegion cr = self.mapView.region;
     cr.span.latitudeDelta = 0.01;
@@ -56,6 +63,16 @@ CLLocationCoordinate2D center;
     
     // メッセージ
     self.messageLabel.backgroundColor = [UIColor clearColor];
+    
+    // 広告
+    self.nadView = [[NADView alloc] initWithFrame:CGRectMake(0,0,
+                                                             NAD_ADVIEW_SIZE_320x50.width, NAD_ADVIEW_SIZE_320x50.height )];
+    [self.nadView setIsOutputLog:NO];
+    [self.nadView setNendID:[[[NSBundle mainBundle] infoDictionary] objectForKey:kNendId]
+                     spotID:[[[NSBundle mainBundle] infoDictionary] objectForKey:kNendSpotId]];
+    [self.nadView setDelegate:(id)self];
+    [self.adView addSubview:self.nadView];
+    [self.nadView load];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,12 +81,17 @@ CLLocationCoordinate2D center;
     // Dispose of any resources that can be recreated.
 }
 
+- (void) dealloc {
+    [self.nadView setDelegate:nil];
+    self.nadView = nil;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    // タイトル
-    self.navigationItem.title = @"位置確認";
+    // 広告
+    [self.nadView resume];
     
     // 地図の表示場所を設定
     CLLocationCoordinate2D center;
@@ -80,7 +102,7 @@ CLLocationCoordinate2D center;
     // 相手がいる場所にピンを表示
     MKPointAnnotation* pin = [[MKPointAnnotation alloc] init];
     pin.coordinate = center;
-    [_mapView addAnnotation:pin];
+    [self.mapView addAnnotation:pin];
     
     
     // 相手からのメッセージ背景
@@ -98,6 +120,11 @@ CLLocationCoordinate2D center;
     self.createdTimeLabel.text = self.notification.updatedAt;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.nadView pause];
+}
 
 #pragma mark - 
 

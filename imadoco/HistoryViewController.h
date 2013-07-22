@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
+#import "NADView.h"
 
-@interface HistoryViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, EGORefreshTableHeaderDelegate>
+@interface HistoryViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, EGORefreshTableHeaderDelegate, NADViewDelegate>
 
 - (void)showNotificationArray:(NSMutableArray *)array;
 

@@ -7,6 +7,7 @@
 //
 
 #import "ImadocoNetworkEngine.h"
+#import "InfoPlistProperty.h"
 
 @implementation ImadocoNetworkEngine
 
@@ -16,7 +17,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *host = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"ServerHostName"];
+        NSString *host = [[[NSBundle mainBundle] infoDictionary] objectForKey:kServerHostName];
         NSLog(@"%s create engine: %@", __func__, host);
         _sharedInstance = [[ImadocoNetworkEngine alloc] initWithHostName:host];
     });
