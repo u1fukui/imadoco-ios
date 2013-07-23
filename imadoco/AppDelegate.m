@@ -11,9 +11,10 @@
 #import "TopViewController.h"
 #import "ImadocoNetworkEngine.h"
 #import "NotificationManager.h"
+#import "InfoPlistProperty.h"
+#import "FBEncryptorAES.h"
 
 @implementation AppDelegate
-
 
 void uncaughtExceptionHandler(NSException *exception)
 {
@@ -79,12 +80,18 @@ void uncaughtExceptionHandler(NSException *exception)
     // レスポンスに対する処理
     ResponseBlock responseBlock = ^(MKNetworkOperation *op) {
         NSLog(@"success!!");
+        NSLog(@"%@", op.responseString);
+        
         
         // レスポンスの解析
         NSDictionary *dict = op.responseJSON;
         self.userId = [dict[@"user_id"] intValue];
         
         NSLog(@"userId = %d", self.userId);
+        
+//        [self setCookie:self.userId
+//                 forKey:@"UserCookie"
+//                 domain:[[[NSBundle mainBundle] infoDictionary] objectForKey:kServerHostName]];
     };
     
     // エラー処理
@@ -93,7 +100,16 @@ void uncaughtExceptionHandler(NSException *exception)
         NSLog(@"%@", error);
     };
     
-    [[ImadocoNetworkEngine sharedEngine] registerDeviceId:[NSString stringWithFormat:@"%@", deviceToken]
+    
+    NSLog(@"deviceToken = %@", deviceToken);
+    
+    NSString *deviceId = [FBEncryptorAES encryptBase64String:[NSString stringWithFormat:@"%@", deviceToken]
+                                                   keyString:[[[NSBundle mainBundle] infoDictionary] objectForKey:kEncryptKey]
+                                               separateLines:YES];
+    
+    NSLog(@"deviceId = %@", deviceId);
+    
+    [[ImadocoNetworkEngine sharedEngine] registerDeviceId:deviceId
                                         completionHandler:responseBlock
                                              errorHandler:errorBlock];
 }
@@ -103,6 +119,27 @@ void uncaughtExceptionHandler(NSException *exception)
     NSLog(@"%s", __func__);
     NSLog(@"%@", error.localizedDescription);
     NSLog(@"%@", error.localizedFailureReason);
+}
+
+
+#pragma mark - Cookie
+
+//指定パラメータのクッキーをセット
+//value: クッキーの値
+//key: クッキーのキー名
+//domain: クッキーを適用するドメイン(xxxx.ne.jp)
+- (void)setCookie:(NSString *)value forKey:(NSString *)key domain:(NSString *)domain{
+    
+    //クッキーを作成
+    NSDictionary *properties = [[NSMutableDictionary alloc] init];
+    [properties setValue:[value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+                  forKey:NSHTTPCookieValue];
+    [properties setValue:key forKey:NSHTTPCookieName];
+    [properties setValue:domain forKey:NSHTTPCookieDomain];
+    NSHTTPCookie *cookie = [[NSHTTPCookie alloc] initWithProperties:properties];
+    
+    //共通クッキーストレージを取得してセット
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
 }
 
 @end

@@ -28,6 +28,8 @@
 		7792DD97179C35FF00FB5991 /* NADView_readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD94179C35FF00FB5991 /* NADView_readme.txt */; };
 		7792DD99179C362000FB5991 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7792DD98179C362000FB5991 /* AdSupport.framework */; };
 		7792DD9C179D555600FB5991 /* InfoPlistProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7792DD9B179D555600FB5991 /* InfoPlistProperty.m */; };
+		7792DDA2179D7A2400FB5991 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 7792DD9F179D7A2400FB5991 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7792DDA3179D7A2400FB5991 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7792DDA1179D7A2400FB5991 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		779684141789C6B700010AD7 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 779683FB1789C6B700010AD7 /* NSAlert+MKNetworkKitAdditions.m */; };
 		779684151789C6B700010AD7 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 779683FD1789C6B700010AD7 /* NSData+MKBase64.m */; };
 		779684161789C6B700010AD7 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 779683FF1789C6B700010AD7 /* NSDate+RFC1123.m */; };
@@ -147,6 +149,10 @@
 		7792DD98179C362000FB5991 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		7792DD9A179D555600FB5991 /* InfoPlistProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoPlistProperty.h; sourceTree = "<group>"; };
 		7792DD9B179D555600FB5991 /* InfoPlistProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoPlistProperty.m; sourceTree = "<group>"; };
+		7792DD9E179D7A2400FB5991 /* FBEncryptorAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBEncryptorAES.h; sourceTree = "<group>"; };
+		7792DD9F179D7A2400FB5991 /* FBEncryptorAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBEncryptorAES.m; sourceTree = "<group>"; };
+		7792DDA0179D7A2400FB5991 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		7792DDA1179D7A2400FB5991 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		779683FB1789C6B700010AD7 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		779683FC1789C6B700010AD7 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
 		779683FD1789C6B700010AD7 /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
@@ -352,6 +358,17 @@
 			path = NendAd;
 			sourceTree = "<group>";
 		};
+		7792DD9D179D7A2400FB5991 /* FBEncryptor */ = {
+			isa = PBXGroup;
+			children = (
+				7792DD9E179D7A2400FB5991 /* FBEncryptorAES.h */,
+				7792DD9F179D7A2400FB5991 /* FBEncryptorAES.m */,
+				7792DDA0179D7A2400FB5991 /* NSData+Base64.h */,
+				7792DDA1179D7A2400FB5991 /* NSData+Base64.m */,
+			);
+			path = FBEncryptor;
+			sourceTree = "<group>";
+		};
 		779683F41789C66C00010AD7 /* network */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +381,7 @@
 		779683F81789C6B700010AD7 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				7792DD9D179D7A2400FB5991 /* FBEncryptor */,
 				77FE2D58179A501E006CFED6 /* FlatUIKit */,
 				77FE2D3C17943899006CFED6 /* EGOTableViewPullRefresh */,
 				779683F91789C6B700010AD7 /* MKNetworkKit */,
@@ -859,6 +877,8 @@
 				7792DD8B179BDC1900FB5991 /* NotificationManager.m in Sources */,
 				7792DD8E179C2C5A00FB5991 /* NSString+Validation.m in Sources */,
 				7792DD9C179D555600FB5991 /* InfoPlistProperty.m in Sources */,
+				7792DDA2179D7A2400FB5991 /* FBEncryptorAES.m in Sources */,
+				7792DDA3179D7A2400FB5991 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

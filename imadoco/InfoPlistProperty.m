@@ -13,5 +13,6 @@
 NSString * const kServerHostName = @"ServerHostName";
 NSString * const kNendId = @"NendID";
 NSString * const kNendSpotId = @"NendSpotID";
+NSString * const kEncryptKey = @"EncryptKey";
 
 @end

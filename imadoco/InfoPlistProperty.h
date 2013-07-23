@@ -13,5 +13,6 @@
 extern NSString * const kServerHostName;
 extern NSString * const kNendId;
 extern NSString * const kNendSpotId;
+extern NSString * const kEncryptKey;
 
 @end

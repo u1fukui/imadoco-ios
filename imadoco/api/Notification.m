@@ -19,10 +19,7 @@
         self.lat = [dict[@"lat"] doubleValue];
         self.lng = [dict[@"lng"] doubleValue];
         self.message = dict[@"message"];
-        
         self.updatedAt = [self formatDateString:dict[@"created_at"]];
-        
-        NSLog(@"updatedAt = %@", self.updatedAt);
     }
     return self;
 }
