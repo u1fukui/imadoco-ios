@@ -86,12 +86,16 @@ void uncaughtExceptionHandler(NSException *exception)
         // レスポンスの解析
         NSDictionary *dict = op.responseJSON;
         self.userId = [dict[@"user_id"] intValue];
+        NSString *cookie = dict[@"cookie"];
         
         NSLog(@"userId = %d", self.userId);
+        NSLog(@"cookie = %@", cookie);
         
-//        [self setCookie:self.userId
-//                 forKey:@"UserCookie"
-//                 domain:[[[NSBundle mainBundle] infoDictionary] objectForKey:kServerHostName]];
+        [self setCookie:cookie
+                 forKey:@"user_cookie"
+                 domain:[[[NSBundle mainBundle] infoDictionary] objectForKey:kServerHostName]
+             cookiePath:@"/"
+                expires:0];
     };
     
     // エラー処理
@@ -128,7 +132,9 @@ void uncaughtExceptionHandler(NSException *exception)
 //value: クッキーの値
 //key: クッキーのキー名
 //domain: クッキーを適用するドメイン(xxxx.ne.jp)
-- (void)setCookie:(NSString *)value forKey:(NSString *)key domain:(NSString *)domain{
+//path: クッキーの有効適用範囲(サーバ上のパス)
+//expires: クッキーの有効期限(0は無限)
+- (void)setCookie:(NSString *)value forKey:(NSString *)key domain:(NSString *)domain cookiePath:(NSString *)path expires:(NSString *)expires {
     
     //クッキーを作成
     NSDictionary *properties = [[NSMutableDictionary alloc] init];
@@ -136,6 +142,8 @@ void uncaughtExceptionHandler(NSException *exception)
                   forKey:NSHTTPCookieValue];
     [properties setValue:key forKey:NSHTTPCookieName];
     [properties setValue:domain forKey:NSHTTPCookieDomain];
+    [properties setValue:expires forKey:NSHTTPCookieExpires];
+    [properties setValue:path forKey:NSHTTPCookiePath];
     NSHTTPCookie *cookie = [[NSHTTPCookie alloc] initWithProperties:properties];
     
     //共通クッキーストレージを取得してセット

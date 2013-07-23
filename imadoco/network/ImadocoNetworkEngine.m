@@ -24,7 +24,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     return _sharedInstance;
 }
 
-// 連想の登録
+// デバイスIDの登録
 -(MKNetworkOperation*) registerDeviceId:(NSString *) deviceId
                 completionHandler:(ResponseBlock) completionBlock
                      errorHandler:(MKNKErrorBlock) errorBlock
@@ -56,7 +56,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     return op;
 }
 
-// 連想の登録
+// マップURLの生成
 -(MKNetworkOperation*) requestGetMailText:(int)userId
                                      name:(NSString *)name
                         completionHandler:(ResponseBlock) completionBlock
