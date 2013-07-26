@@ -78,35 +78,21 @@ void uncaughtExceptionHandler(NSException *exception)
     NSLog(@"%s", __func__);
     
     // レスポンスに対する処理
-    ResponseBlock responseBlock = ^(MKNetworkOperation *op) {
-        NSLog(@"success!!");
-        NSLog(@"%@", op.responseString);
-        
-        
-        // レスポンスの解析
-        NSDictionary *dict = op.responseJSON;
-        self.userId = [dict[@"user_id"] intValue];
-        self.sessionId = dict[@"api_session"];
-        
-        NSLog(@"userId = %d", self.userId);
-        NSLog(@"sessionId = %@", self.sessionId);
+    RegisterResponseBlock responseBlock = ^(int userId, NSString *sessionId) {
+        self.userId = userId;
+        self.sessionId = sessionId;
     };
     
     // エラー処理
     MKNKErrorBlock errorBlock =  ^(NSError *error) {
-        NSLog(@"failed!!");
-        NSLog(@"%@", error);
     };
     
-    
-    NSLog(@"deviceToken = %@", deviceToken);
-    
+    // デバイスID暗号化
     NSString *deviceId = [FBEncryptorAES encryptBase64String:[NSString stringWithFormat:@"%@", deviceToken]
                                                    keyString:[[[NSBundle mainBundle] infoDictionary] objectForKey:kEncryptKey]
                                                separateLines:YES];
     
-    NSLog(@"deviceId = %@", deviceId);
-    
+    // 通信
     [[ImadocoNetworkEngine sharedEngine] registerDeviceId:deviceId
                                         completionHandler:responseBlock
                                              errorHandler:errorBlock];

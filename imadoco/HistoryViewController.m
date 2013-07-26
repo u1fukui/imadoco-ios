@@ -198,21 +198,12 @@
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
 {
 	// レスポンスに対する処理
-    ResponseBlock responseBlock = ^(MKNetworkOperation *op) {
-        NSLog(@"success!!");
-        
+    NotificationsResponseBlock responseBlock = ^(NSMutableArray *notificationArray) {
+        // PullToRefresh
         self.isReloading = NO;
         [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.historyTableView];
         
-        // レスポンス解析
-        NSLog(@"%@", op.responseJSON);
-        NSMutableArray *notificationArray = [NSMutableArray array];
-        NSArray *array = op.responseJSON;
-        for (NSDictionary *dict in array) {
-            Notification *notification = [[Notification alloc] initWithDictionary:dict];
-            [notificationArray addObject:notification];
-        }
-        
+        // データ更新
         self.notificationArray = notificationArray;
         [self.historyTableView reloadData];
     };

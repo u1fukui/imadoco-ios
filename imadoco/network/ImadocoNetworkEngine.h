@@ -10,6 +10,10 @@
 
 @interface ImadocoNetworkEngine : MKNetworkEngine
 
+typedef void (^MailResponseBlock)(NSString *subject, NSString *body);
+typedef void (^RegisterResponseBlock)(int userId, NSString *sessionId);
+typedef void (^NotificationsResponseBlock)(NSMutableArray *notificationArray);
+
 typedef void (^ResponseBlock)(MKNetworkOperation *op);
 
 // シングルトンインスタンス取得
@@ -17,18 +21,18 @@ typedef void (^ResponseBlock)(MKNetworkOperation *op);
 
 // deviceIDの登録
 -(MKNetworkOperation*) registerDeviceId:(NSString *) deviceId
-                      completionHandler:(ResponseBlock) completionBlock
+                      completionHandler:(RegisterResponseBlock) completionBlock
                            errorHandler:(MKNKErrorBlock) errorBlock;
 
 -(MKNetworkOperation*) requestGetMailText:(int)userId
                                 sessionId:(NSString *)sessionId
                                      name:(NSString *)name
-                        completionHandler:(ResponseBlock) completionBlock
+                        completionHandler:(MailResponseBlock) completionBlock
                              errorHandler:(MKNKErrorBlock) errorBlock;
 
 -(MKNetworkOperation*) requestGetNotificationArray:(int)userId
                                          sessionId:(NSString *)sessionId
-                                 completionHandler:(ResponseBlock) completionBlock
+                                 completionHandler:(NotificationsResponseBlock) completionBlock
                                       errorHandler:(MKNKErrorBlock) errorBlock;
 
 @end

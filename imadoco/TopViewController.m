@@ -151,20 +151,7 @@ const int kAlertLaunchMailer = 2;
         
     } else if (self.showHistoryButton) {
         // レスポンスに対する処理
-        ResponseBlock responseBlock = ^(MKNetworkOperation *op) {
-            NSLog(@"success!!");
-            NSLog(@"code = %d", op.HTTPStatusCode);
-            
-            NSLog(@"%@", op.responseJSON);
-            
-            // レスポンス解析
-            NSMutableArray *notificationArray = [NSMutableArray array];
-            NSArray *array = op.responseJSON;
-            for (NSDictionary *dict in array) {
-                Notification *notification = [[Notification alloc] initWithDictionary:dict];
-                [notificationArray addObject:notification];
-            }
-            
+        NotificationsResponseBlock responseBlock = ^(NSMutableArray *notificationArray) {
             HistoryViewController *controller = [[HistoryViewController alloc] initWithNibName:@"HistoryViewController" bundle:nil];
             [controller showNotificationArray:notificationArray];
             [self.navigationController pushViewController:controller
@@ -173,7 +160,11 @@ const int kAlertLaunchMailer = 2;
         
         // エラー処理
         MKNKErrorBlock errorBlock =  ^(NSError *error) {
-            NSLog(@"failed!!");
+            // エラーメッセージ
+            UIAlertView *alert =
+            [[UIAlertView alloc] initWithTitle:@"エラー" message:@"通信に失敗しました"
+                                      delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
         };
         
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -225,13 +216,9 @@ const int kAlertLaunchMailer = 2;
     }
     
     // レスポンスに対する処理
-    ResponseBlock responseBlock = ^(MKNetworkOperation *op) {
-        NSLog(@"success!!");
-        
-        // レスポンス解析
-        NSDictionary *dict = op.responseJSON;
-        self.mailSubject = dict[@"mail_subject"];
-        self.mailBody = dict[@"mail_body"];
+    MailResponseBlock responseBlock = ^(NSString *subject, NSString *body) {
+        self.mailSubject = subject;
+        self.mailBody = body;
         
         // アラート
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"登録完了"
@@ -244,7 +231,13 @@ const int kAlertLaunchMailer = 2;
     
     // エラー処理
     MKNKErrorBlock errorBlock =  ^(NSError *error) {
-        NSLog(@"failed!!");
+        // アラート
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
+                                                        message:@"サーバとの通信に失敗しました。失敗が続くようでしたらメールをお願いしますm(_ _)m"
+                                                       delegate:self
+                                              cancelButtonTitle:@"確認" otherButtonTitles:nil];
+        [alert show];
+
     };
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];

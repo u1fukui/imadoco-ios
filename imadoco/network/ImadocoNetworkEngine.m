@@ -8,6 +8,7 @@
 
 #import "ImadocoNetworkEngine.h"
 #import "InfoPlistProperty.h"
+#import "Notification.h"
 
 @implementation ImadocoNetworkEngine
 
@@ -28,7 +29,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
 
 // デバイスIDの登録
 -(MKNetworkOperation*) registerDeviceId:(NSString *) deviceId
-                completionHandler:(ResponseBlock) completionBlock
+                completionHandler:(RegisterResponseBlock) completionBlock
                      errorHandler:(MKNKErrorBlock) errorBlock
 {
     // Body
@@ -45,10 +46,16 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation)
      {
-         completionBlock(completedOperation);
+         // レスポンス解析
+         NSDictionary *dict = completedOperation.responseJSON;
+         int userId = [dict[@"user_id"] intValue];
+         NSString *sessionId = dict[@"api_session"];
+         
+         completionBlock(userId, sessionId);
          
      } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
-         
+         NSLog(@"failed!!");
+         NSLog(@"%@", error);
          errorBlock(error);
          
      }];
@@ -62,7 +69,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
 -(MKNetworkOperation*) requestGetMailText:(int)userId
                                 sessionId:(NSString *)sessionId
                                      name:(NSString *)name
-                        completionHandler:(ResponseBlock) completionBlock
+                        completionHandler:(MailResponseBlock) completionBlock
                              errorHandler:(MKNKErrorBlock) errorBlock
 {
     NSLog(@"%s", __func__);
@@ -82,10 +89,14 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation)
      {
-         completionBlock(completedOperation);
+         NSDictionary *dict = completedOperation.responseJSON;
+         NSString *subject = dict[@"mail_subject"];
+         NSString *body = dict[@"mail_body"];
+         completionBlock(subject, body);
          
      } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
-         
+         NSLog(@"failed!!");
+         NSLog(@"%@", error);
          errorBlock(error);
          
      }];
@@ -99,7 +110,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
 // 通知履歴の取得
 -(MKNetworkOperation*) requestGetNotificationArray:(int)userId
                                          sessionId:(NSString *)sessionId
-                                 completionHandler:(ResponseBlock) completionBlock
+                                 completionHandler:(NotificationsResponseBlock) completionBlock
                                       errorHandler:(MKNKErrorBlock) errorBlock
 {
     NSLog(@"%s", __func__);
@@ -112,10 +123,17 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation)
      {
-         completionBlock(completedOperation);
+         NSMutableArray *notificationArray = [NSMutableArray array];
+         NSArray *array = completedOperation.responseJSON;
+         for (NSDictionary *dict in array) {
+             Notification *notification = [[Notification alloc] initWithDictionary:dict];
+             [notificationArray addObject:notification];
+         }
+         completionBlock(notificationArray);
          
      } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
-         
+         NSLog(@"failed!!");
+         NSLog(@"%@", error);
          errorBlock(error);
          
      }];
