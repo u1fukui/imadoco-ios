@@ -16,7 +16,7 @@
 @property (nonatomic,retain) UINavigationController* rootController;
 @property (strong, nonatomic) TopViewController *viewController;
 
-@property (assign, nonatomic) int userId;
+@property (assign, nonatomic) NSString *userId;
 @property (strong, nonatomic) NSString *sessionId;
 
 @end

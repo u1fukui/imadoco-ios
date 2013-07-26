@@ -12,7 +12,24 @@
 
 @implementation ImadocoNetworkEngine
 
+// メソッド
+NSString * const kMethodGet = @"GET";
+NSString * const kMethodPost = @"POST";
+
+// パス
+NSString * const kPathRegisterUser = @"user.json";
+NSString * const kPathRegisterDevice = @"device.json";
+NSString * const kPathCreateMail = @"mail.json";
+NSString * const kPathGetNotifications = @"notifications/%@";
+
+// パラメータ名
+NSString * const kParamUserId = @"user_id";
 NSString * const kParamSessionId = @"api_session";
+NSString * const kParamDeviceType = @"device_type";
+NSString * const kParamDeviceId = @"device_id";
+NSString * const kParamMapName = @"map_name";
+NSString * const kParamMailSubject = @"mail_subject";
+NSString * const kParamMailBody = @"mail_body";
 
 static ImadocoNetworkEngine *_sharedInstance = nil;
 
@@ -27,34 +44,76 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     return _sharedInstance;
 }
 
-// デバイスIDの登録
--(MKNetworkOperation*) registerDeviceId:(NSString *) deviceId
-                completionHandler:(RegisterResponseBlock) completionBlock
-                     errorHandler:(MKNKErrorBlock) errorBlock
+// ユーザ登録
+-(MKNetworkOperation*) registerUserId:(NSString *)userId
+                    completionHandler:(RegisterUserResponseBlock) completionBlock
+                         errorHandler:(MKNKErrorBlock) errorBlock;
 {
+    // ユーザIDが未設定の場合は0を設定する
+    NSString *paramUserId;
+    if (userId == nil) {
+        paramUserId = @"0";
+    } else {
+        paramUserId = userId;
+    }
+    
     // Body
     NSDictionary *params = @{
-                             @"device_id": deviceId,
-                             @"device_type" : @"0",
-                            };
+                             kParamUserId: paramUserId,
+                             kParamDeviceType : @"0",
+                             };
     
     // リクエスト
-    MKNetworkOperation *op = [self operationWithPath:@"device.json"
+    MKNetworkOperation *op = [self operationWithPath:kPathRegisterUser
                                               params:params
-                                          httpMethod:@"POST"];
+                                          httpMethod:kMethodPost];
     [op setPostDataEncoding:MKNKPostDataEncodingTypeJSON];
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation)
      {
          // レスポンス解析
          NSDictionary *dict = completedOperation.responseJSON;
-         int userId = [dict[@"user_id"] intValue];
-         NSString *sessionId = dict[@"api_session"];
+         NSString *userId = dict[kParamUserId];
+         NSString *sessionId = dict[kParamSessionId];
          
          completionBlock(userId, sessionId);
          
      } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
-         NSLog(@"failed!!");
+         NSLog(@"%@", error);
+         errorBlock(error);
+         
+     }];
+    
+    [self enqueueOperation:op];
+    
+    return op;
+}
+
+// デバイスIDの登録
+-(MKNetworkOperation*) registerDeviceId:(NSString *)userId
+                              sessionId:(NSString *)sessionId
+                               deviceId:(NSString *)deviceId
+                      completionHandler:(RegisterDeviceResponseBlock)completionBlock
+                           errorHandler:(MKNKErrorBlock)errorBlock;
+{
+    // Body
+    NSDictionary *params = @{
+                             kParamUserId: userId,
+                             kParamSessionId: sessionId,
+                             kParamDeviceId: deviceId,
+                            };
+    
+    // リクエスト
+    MKNetworkOperation *op = [self operationWithPath:kPathRegisterDevice
+                                              params:params
+                                          httpMethod:kMethodPost];
+    [op setPostDataEncoding:MKNKPostDataEncodingTypeJSON];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation)
+     {
+         completionBlock();
+         
+     } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
          NSLog(@"%@", error);
          errorBlock(error);
          
@@ -66,36 +125,35 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
 }
 
 // マップURLの生成
--(MKNetworkOperation*) requestGetMailText:(int)userId
-                                sessionId:(NSString *)sessionId
-                                     name:(NSString *)name
-                        completionHandler:(MailResponseBlock) completionBlock
-                             errorHandler:(MKNKErrorBlock) errorBlock
+-(MKNetworkOperation*) requestCreateMailText:(NSString *)userId
+                                   sessionId:(NSString *)sessionId
+                                        name:(NSString *)name
+                           completionHandler:(MailResponseBlock) completionBlock
+                                errorHandler:(MKNKErrorBlock) errorBlock
 {
     NSLog(@"%s", __func__);
     
     // Body
     NSDictionary *params = @{
-                             @"user_id" : [NSString stringWithFormat:@"%d", userId],
-                             @"name" : name,
+                             kParamUserId : userId,
+                             kParamMapName : name,
                              kParamSessionId : sessionId
                              };
     
     // リクエスト
-    MKNetworkOperation *op = [self operationWithPath:@"mail.json"
+    MKNetworkOperation *op = [self operationWithPath:kPathCreateMail
                                               params:params
-                                          httpMethod:@"POST"];
+                                          httpMethod:kMethodPost];
     [op setPostDataEncoding:MKNKPostDataEncodingTypeJSON];
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation)
      {
          NSDictionary *dict = completedOperation.responseJSON;
-         NSString *subject = dict[@"mail_subject"];
-         NSString *body = dict[@"mail_body"];
+         NSString *subject = dict[kParamMailSubject];
+         NSString *body = dict[kParamMailBody];
          completionBlock(subject, body);
          
      } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
-         NSLog(@"failed!!");
          NSLog(@"%@", error);
          errorBlock(error);
          
@@ -108,18 +166,17 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
 
 
 // 通知履歴の取得
--(MKNetworkOperation*) requestGetNotificationArray:(int)userId
+-(MKNetworkOperation*) requestGetNotificationArray:(NSString *)userId
                                          sessionId:(NSString *)sessionId
                                  completionHandler:(NotificationsResponseBlock) completionBlock
                                       errorHandler:(MKNKErrorBlock) errorBlock
 {
     NSLog(@"%s", __func__);
     
-    NSLog(@"userId = %d", userId);
     // リクエスト
-    MKNetworkOperation *op = [self operationWithPath:[NSString stringWithFormat:@"notifications/%d", userId]
+    MKNetworkOperation *op = [self operationWithPath:[NSString stringWithFormat:kPathGetNotifications, userId]
                                               params:@{ kParamSessionId: sessionId }
-                                          httpMethod:@"GET"];
+                                          httpMethod:kMethodGet];
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation)
      {

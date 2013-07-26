@@ -14,6 +14,8 @@
 #import "InfoPlistProperty.h"
 #import "FBEncryptorAES.h"
 
+const int kTagAlertError = 1;
+
 @implementation AppDelegate
 
 void uncaughtExceptionHandler(NSException *exception)
@@ -34,9 +36,12 @@ void uncaughtExceptionHandler(NSException *exception)
     self.window.rootViewController = self.rootController;
     [self.window makeKeyAndVisible];
     
-    // PUSH通知登録
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
+    // ユーザ情報読み込み
+    [self load];
     
+    // ユーザ状態の更新
+    [self requestRegisterUser];
+
     // 通知の確認状態を確認
     [[NotificationManager sharedManager] load];
     
@@ -62,7 +67,7 @@ void uncaughtExceptionHandler(NSException *exception)
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -71,6 +76,38 @@ void uncaughtExceptionHandler(NSException *exception)
 }
 
 
+#pragma mark - ユーザ登録
+
+- (void)requestRegisterUser
+{
+    RegisterUserResponseBlock responseBlock = ^(NSString *userId, NSString *sessionId) {
+        self.userId = userId;
+        self.sessionId = sessionId;
+        [self save];
+        
+        // PUSH通知登録
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
+    };
+    
+    // エラー処理
+    MKNKErrorBlock errorBlock =  ^(NSError *error) {
+        // ユーザIDが設定されるまで繰り返す
+        if (self.userId == nil) {
+            // エラーメッセージ
+            UIAlertView *alert =
+            [[UIAlertView alloc] initWithTitle:@"エラー" message:@"通信に失敗しました。電波の良いところで再度試してみて下さい。"
+                                      delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            alert.tag = kTagAlertError;
+            [alert show];
+        }
+    };
+    
+    // 通信
+    [[ImadocoNetworkEngine sharedEngine] registerUserId:self.userId
+                                      completionHandler:responseBlock
+                                           errorHandler:errorBlock];
+}
+
 #pragma mark - PUSH通知
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -78,9 +115,7 @@ void uncaughtExceptionHandler(NSException *exception)
     NSLog(@"%s", __func__);
     
     // レスポンスに対する処理
-    RegisterResponseBlock responseBlock = ^(int userId, NSString *sessionId) {
-        self.userId = userId;
-        self.sessionId = sessionId;
+    RegisterDeviceResponseBlock responseBlock = ^() {
     };
     
     // エラー処理
@@ -93,7 +128,9 @@ void uncaughtExceptionHandler(NSException *exception)
                                                separateLines:YES];
     
     // 通信
-    [[ImadocoNetworkEngine sharedEngine] registerDeviceId:deviceId
+    [[ImadocoNetworkEngine sharedEngine] registerDeviceId:self.userId
+                                                sessionId:self.sessionId
+                                                 deviceId:deviceId
                                         completionHandler:responseBlock
                                              errorHandler:errorBlock];
 }
@@ -105,5 +142,41 @@ void uncaughtExceptionHandler(NSException *exception)
     NSLog(@"%@", error.localizedFailureReason);
 }
 
+#pragma mark - データ永続化
+
+- (void)save
+{
+    NSString *path = [AppDelegate getFilePath];
+    [NSKeyedArchiver archiveRootObject:self.userId toFile:path];
+}
+
+- (void)load
+{
+    NSString *path = [AppDelegate getFilePath];
+    self.userId = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    
+    NSLog(@"load %@", self.userId);
+}
+
++ (NSString *)getFilePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(
+                                                         NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    return [paths[0] stringByAppendingPathComponent:@"UserId.dat"];
+}
+
+
+#pragma mark - UIAlerViewDelegate
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"%s", __func__);
+    
+    switch (alertView.tag) {
+        case kTagAlertError:
+            [self requestRegisterUser];
+            break;
+    }
+}
 
 @end

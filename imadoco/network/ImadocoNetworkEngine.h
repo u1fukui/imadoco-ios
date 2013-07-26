@@ -10,29 +10,37 @@
 
 @interface ImadocoNetworkEngine : MKNetworkEngine
 
+typedef void (^RegisterUserResponseBlock)(NSString *userId, NSString *sessionId);
+typedef void (^RegisterDeviceResponseBlock)();
 typedef void (^MailResponseBlock)(NSString *subject, NSString *body);
-typedef void (^RegisterResponseBlock)(int userId, NSString *sessionId);
 typedef void (^NotificationsResponseBlock)(NSMutableArray *notificationArray);
-
-typedef void (^ResponseBlock)(MKNetworkOperation *op);
 
 // シングルトンインスタンス取得
 + (ImadocoNetworkEngine *)sharedEngine;
 
+// ユーザ登録
+-(MKNetworkOperation*) registerUserId:(NSString *) userId
+                    completionHandler:(RegisterUserResponseBlock)completionBlock
+                         errorHandler:(MKNKErrorBlock)errorBlock;
+
 // deviceIDの登録
--(MKNetworkOperation*) registerDeviceId:(NSString *) deviceId
-                      completionHandler:(RegisterResponseBlock) completionBlock
-                           errorHandler:(MKNKErrorBlock) errorBlock;
+-(MKNetworkOperation*) registerDeviceId:(NSString *)userId
+                              sessionId:(NSString *)sessionId
+                               deviceId:(NSString *)deviceId
+                      completionHandler:(RegisterDeviceResponseBlock)completionBlock
+                           errorHandler:(MKNKErrorBlock)errorBlock;
 
--(MKNetworkOperation*) requestGetMailText:(int)userId
-                                sessionId:(NSString *)sessionId
-                                     name:(NSString *)name
-                        completionHandler:(MailResponseBlock) completionBlock
-                             errorHandler:(MKNKErrorBlock) errorBlock;
+// メール本文の取得
+-(MKNetworkOperation*) requestCreateMailText:(NSString *)userId
+                                   sessionId:(NSString *)sessionId
+                                        name:(NSString *)name
+                           completionHandler:(MailResponseBlock)completionBlock
+                                errorHandler:(MKNKErrorBlock)errorBlock;
 
--(MKNetworkOperation*) requestGetNotificationArray:(int)userId
+// 通知履歴を取得
+-(MKNetworkOperation*) requestGetNotificationArray:(NSString *)userId
                                          sessionId:(NSString *)sessionId
-                                 completionHandler:(NotificationsResponseBlock) completionBlock
-                                      errorHandler:(MKNKErrorBlock) errorBlock;
+                                 completionHandler:(NotificationsResponseBlock)completionBlock
+                                      errorHandler:(MKNKErrorBlock)errorBlock;
 
 @end

@@ -60,13 +60,11 @@ const int kAlertLaunchMailer = 2;
     self.mainView.frame = frame;
     
     // 背景色
-    //self.view.backgroundColor = [UIColor colorWithHex:@"#FFFFF0"];
     self.view.backgroundColor = [UIColor colorWithHex:@"#F6F6F6"];
     
     // ナビゲーション
-    self.navigationItem.title = @"imadoco";
+    self.navigationItem.title = @"imadoco?";
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor belizeHoleColor]];
-    
     
     // メールを送る
     self.sendMailButton.buttonColor = [UIColor tangerineColor];
@@ -139,7 +137,7 @@ const int kAlertLaunchMailer = 2;
     if (button == self.sendMailButton) {
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"名前の登録"
-                                                        message:@"送り先の名前を入力して下さい"
+                                                        message:@"まずは居場所を知りたい相手の名前を入力して下さい"
                                                        delegate:self
                                               cancelButtonTitle:@"キャンセル"
                                               otherButtonTitles:@"OK", nil];
@@ -241,11 +239,11 @@ const int kAlertLaunchMailer = 2;
     };
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [[ImadocoNetworkEngine sharedEngine] requestGetMailText:appDelegate.userId
-                                                  sessionId:appDelegate.sessionId
-                                                       name:mapName
-                                          completionHandler:responseBlock
-                                               errorHandler:errorBlock];
+    [[ImadocoNetworkEngine sharedEngine] requestCreateMailText:appDelegate.userId
+                                                     sessionId:appDelegate.sessionId
+                                                          name:mapName
+                                             completionHandler:responseBlock
+                                                  errorHandler:errorBlock];
 }
 
 - (void)launchMailer:(NSString *)subject body:(NSString *)body
