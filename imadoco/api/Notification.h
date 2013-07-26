@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) NSString *message;
 
-@property (strong, nonatomic) NSString *updatedAt;
+@property (strong, nonatomic) NSString *createdAt;
 
 
 - (id)initWithDictionary:(NSDictionary *) dict;

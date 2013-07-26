@@ -20,13 +20,14 @@ typedef void (^ResponseBlock)(MKNetworkOperation *op);
                       completionHandler:(ResponseBlock) completionBlock
                            errorHandler:(MKNKErrorBlock) errorBlock;
 
-
 -(MKNetworkOperation*) requestGetMailText:(int)userId
+                                sessionId:(NSString *)sessionId
                                      name:(NSString *)name
                         completionHandler:(ResponseBlock) completionBlock
                              errorHandler:(MKNKErrorBlock) errorBlock;
 
 -(MKNetworkOperation*) requestGetNotificationArray:(int)userId
+                                         sessionId:(NSString *)sessionId
                                  completionHandler:(ResponseBlock) completionBlock
                                       errorHandler:(MKNKErrorBlock) errorBlock;
 

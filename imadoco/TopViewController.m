@@ -153,6 +153,7 @@ const int kAlertLaunchMailer = 2;
         // レスポンスに対する処理
         ResponseBlock responseBlock = ^(MKNetworkOperation *op) {
             NSLog(@"success!!");
+            NSLog(@"code = %d", op.HTTPStatusCode);
             
             NSLog(@"%@", op.responseJSON);
             
@@ -177,6 +178,7 @@ const int kAlertLaunchMailer = 2;
         
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         [[ImadocoNetworkEngine sharedEngine] requestGetNotificationArray:appDelegate.userId
+                                                               sessionId:appDelegate.sessionId
                                                        completionHandler:responseBlock
                                                             errorHandler:errorBlock];
     }
@@ -247,6 +249,7 @@ const int kAlertLaunchMailer = 2;
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [[ImadocoNetworkEngine sharedEngine] requestGetMailText:appDelegate.userId
+                                                  sessionId:appDelegate.sessionId
                                                        name:mapName
                                           completionHandler:responseBlock
                                                errorHandler:errorBlock];

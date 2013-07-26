@@ -232,6 +232,7 @@
     self.isReloading = YES;
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [[ImadocoNetworkEngine sharedEngine] requestGetNotificationArray:appDelegate.userId
+                                                           sessionId:appDelegate.sessionId
                                                    completionHandler:responseBlock
                                                         errorHandler:errorBlock];
     

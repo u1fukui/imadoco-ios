@@ -11,6 +11,8 @@
 
 @implementation ImadocoNetworkEngine
 
+NSString * const kParamSessionId = @"api_session";
+
 static ImadocoNetworkEngine *_sharedInstance = nil;
 
 + (ImadocoNetworkEngine *)sharedEngine
@@ -58,6 +60,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
 
 // マップURLの生成
 -(MKNetworkOperation*) requestGetMailText:(int)userId
+                                sessionId:(NSString *)sessionId
                                      name:(NSString *)name
                         completionHandler:(ResponseBlock) completionBlock
                              errorHandler:(MKNKErrorBlock) errorBlock
@@ -67,7 +70,8 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     // Body
     NSDictionary *params = @{
                              @"user_id" : [NSString stringWithFormat:@"%d", userId],
-                             @"name" : name
+                             @"name" : name,
+                             kParamSessionId : sessionId
                              };
     
     // リクエスト
@@ -91,8 +95,10 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     return op;
 }
 
+
 // 通知履歴の取得
 -(MKNetworkOperation*) requestGetNotificationArray:(int)userId
+                                         sessionId:(NSString *)sessionId
                                  completionHandler:(ResponseBlock) completionBlock
                                       errorHandler:(MKNKErrorBlock) errorBlock
 {
@@ -101,7 +107,7 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     NSLog(@"userId = %d", userId);
     // リクエスト
     MKNetworkOperation *op = [self operationWithPath:[NSString stringWithFormat:@"notifications/%d", userId]
-                                              params:nil
+                                              params:@{ kParamSessionId: sessionId }
                                           httpMethod:@"GET"];
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation)

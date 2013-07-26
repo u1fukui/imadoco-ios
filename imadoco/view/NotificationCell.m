@@ -93,7 +93,7 @@
 {
     self.userNameLabel.text = notification.name;
     self.messageLabel.text = notification.message;
-    self.createdTimeLabel.text = notification.updatedAt;
+    self.createdTimeLabel.text = notification.createdAt;
     
     if ([[NotificationManager sharedManager] isRead:notification.id]) {
         self.unreadIconView.hidden = YES;

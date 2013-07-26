@@ -117,7 +117,7 @@ CLLocationCoordinate2D center;
     
     self.messageSubLabel.text = [NSString stringWithFormat:@"%@さんからのメッセージ", self.notification.name];
     
-    self.createdTimeLabel.text = self.notification.updatedAt;
+    self.createdTimeLabel.text = self.notification.createdAt;
 }
 
 - (void)viewDidAppear:(BOOL)animated

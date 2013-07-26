@@ -17,5 +17,6 @@
 @property (strong, nonatomic) TopViewController *viewController;
 
 @property (assign, nonatomic) int userId;
+@property (strong, nonatomic) NSString *sessionId;
 
 @end
