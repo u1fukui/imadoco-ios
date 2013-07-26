@@ -260,12 +260,19 @@ const int kAlertLaunchMailer = 2;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    // 最大文字数制限
     int maxInputLength = 10;
     NSMutableString *str = [textField.text mutableCopy];
     [str replaceCharactersInRange:range withString:string];
     if ([str length] > maxInputLength) {
         return NO;
     }
+    
+    // 絵文字はNG
+    if ([NSString isEmoji:string]) {
+        return NO;
+    }
+    
     return YES;
 }
 
