@@ -137,7 +137,7 @@ const int kAlertLaunchMailer = 2;
     if (button == self.sendMailButton) {
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"名前の登録"
-                                                        message:@"まずは居場所を知りたい相手の名前を入力して下さい"
+                                                        message:@"まずは現在地を知りたい相手の名前を入力して下さい"
                                                        delegate:self
                                               cancelButtonTitle:@"キャンセル"
                                               otherButtonTitles:@"OK", nil];
@@ -160,7 +160,7 @@ const int kAlertLaunchMailer = 2;
         MKNKErrorBlock errorBlock =  ^(NSError *error) {
             // エラーメッセージ
             UIAlertView *alert =
-            [[UIAlertView alloc] initWithTitle:@"エラー" message:@"通信に失敗しました"
+            [[UIAlertView alloc] initWithTitle:@"エラー" message:@"サーバとの通信に失敗しました"
                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         };
@@ -231,7 +231,7 @@ const int kAlertLaunchMailer = 2;
     MKNKErrorBlock errorBlock =  ^(NSError *error) {
         // アラート
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
-                                                        message:@"サーバとの通信に失敗しました。失敗が続くようでしたらメールをお願いしますm(_ _)m"
+                                                        message:@"サーバとの通信に失敗しました。"
                                                        delegate:self
                                               cancelButtonTitle:@"確認" otherButtonTitles:nil];
         [alert show];
@@ -248,8 +248,11 @@ const int kAlertLaunchMailer = 2;
 
 - (void)launchMailer:(NSString *)subject body:(NSString *)body
 {
+    
     [[UIApplication sharedApplication] openURL:
-     [NSURL URLWithString:[NSString stringWithFormat:@"mailto:?Subject=%@&body=%@", subject, body]]];
+     [NSURL URLWithString:[NSString stringWithFormat:@"mailto:?Subject=%@&body=%@",
+                           [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                           [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
     
     self.mailSubject = nil;
     self.mailBody = nil;
