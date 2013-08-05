@@ -13,6 +13,7 @@
 #import "NotificationManager.h"
 #import "InfoPlistProperty.h"
 #import "FBEncryptorAES.h"
+#import "SVProgressHUD.h"
 
 const int kTagAlertError = 1;
 
@@ -81,6 +82,10 @@ void uncaughtExceptionHandler(NSException *exception)
 - (void)requestRegisterUser
 {
     RegisterUserResponseBlock responseBlock = ^(NSString *userId, NSString *sessionId) {
+        // ダイアログ非表示
+        [SVProgressHUD dismiss];
+        
+        // ユーザ情報設定
         self.userId = userId;
         self.sessionId = sessionId;
         [self save];
@@ -91,6 +96,9 @@ void uncaughtExceptionHandler(NSException *exception)
     
     // エラー処理
     MKNKErrorBlock errorBlock =  ^(NSError *error) {
+        // ダイアログ非表示
+        [SVProgressHUD dismiss];
+        
         // ユーザIDが設定されるまで繰り返す
         if (self.userId == nil) {
             // エラーメッセージ
@@ -101,6 +109,9 @@ void uncaughtExceptionHandler(NSException *exception)
             [alert show];
         }
     };
+    
+    // ダイアログ非表示
+    [SVProgressHUD show];
     
     // 通信
     [[ImadocoNetworkEngine sharedEngine] registerUserId:self.userId
@@ -154,8 +165,6 @@ void uncaughtExceptionHandler(NSException *exception)
 {
     NSString *path = [AppDelegate getFilePath];
     self.userId = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    
-    NSLog(@"load %@", self.userId);
 }
 
 + (NSString *)getFilePath

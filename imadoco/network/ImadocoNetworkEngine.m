@@ -38,7 +38,6 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSString *host = [[[NSBundle mainBundle] infoDictionary] objectForKey:kServerHostName];
-        NSLog(@"%s create engine: %@", __func__, host);
         _sharedInstance = [[ImadocoNetworkEngine alloc] initWithHostName:host];
     });
     return _sharedInstance;
@@ -189,7 +188,6 @@ static ImadocoNetworkEngine *_sharedInstance = nil;
          completionBlock(notificationArray);
          
      } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
-         NSLog(@"failed!!");
          NSLog(@"%@", error);
          errorBlock(error);
          

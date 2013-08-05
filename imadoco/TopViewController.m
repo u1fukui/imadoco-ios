@@ -15,6 +15,7 @@
 #import "UIColor+Hex.h"
 #import "NSString+Validation.h"
 #import "InfoPlistProperty.h"
+#import "SVProgressHUD.h"
 
 const int kAlertInputName = 1;
 const int kAlertLaunchMailer = 2;
@@ -150,6 +151,10 @@ const int kAlertLaunchMailer = 2;
     } else if (self.showHistoryButton) {
         // レスポンスに対する処理
         NotificationsResponseBlock responseBlock = ^(NSMutableArray *notificationArray) {
+            // ダイアログ非表示
+            [SVProgressHUD dismiss];
+            
+            // 通知履歴画面に繊維
             HistoryViewController *controller = [[HistoryViewController alloc] initWithNibName:@"HistoryViewController" bundle:nil];
             [controller showNotificationArray:notificationArray];
             [self.navigationController pushViewController:controller
@@ -158,6 +163,9 @@ const int kAlertLaunchMailer = 2;
         
         // エラー処理
         MKNKErrorBlock errorBlock =  ^(NSError *error) {
+            // ダイアログ非表示
+            [SVProgressHUD dismiss];
+        
             // エラーメッセージ
             UIAlertView *alert =
             [[UIAlertView alloc] initWithTitle:@"エラー" message:@"サーバとの通信に失敗しました"
@@ -165,6 +173,10 @@ const int kAlertLaunchMailer = 2;
             [alert show];
         };
         
+        // ダイアログ表示
+        [SVProgressHUD show];
+        
+        // 通信実行
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         [[ImadocoNetworkEngine sharedEngine] requestGetNotificationArray:appDelegate.userId
                                                                sessionId:appDelegate.sessionId
@@ -215,6 +227,10 @@ const int kAlertLaunchMailer = 2;
     
     // レスポンスに対する処理
     MailResponseBlock responseBlock = ^(NSString *subject, NSString *body) {
+        // ダイアログ非表示
+        [SVProgressHUD dismiss];
+        
+        // メール情報設定
         self.mailSubject = subject;
         self.mailBody = body;
         
@@ -229,6 +245,9 @@ const int kAlertLaunchMailer = 2;
     
     // エラー処理
     MKNKErrorBlock errorBlock =  ^(NSError *error) {
+        // ダイアログ非表示
+        [SVProgressHUD dismiss];
+        
         // アラート
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
                                                         message:@"サーバとの通信に失敗しました。"
@@ -238,6 +257,10 @@ const int kAlertLaunchMailer = 2;
 
     };
     
+    // ダイアログ表示
+    [SVProgressHUD show];
+    
+    // 通信実行
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [[ImadocoNetworkEngine sharedEngine] requestCreateMailText:appDelegate.userId
                                                      sessionId:appDelegate.sessionId
