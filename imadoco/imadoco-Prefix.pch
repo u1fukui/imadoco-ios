@@ -13,3 +13,9 @@
     #import <Foundation/Foundation.h>
     #import "MKNetworkKit.h"
 #endif
+
+#ifndef RELEASE
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#define NSLog(...) {}
+#endif

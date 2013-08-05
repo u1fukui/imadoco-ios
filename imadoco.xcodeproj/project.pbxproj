@@ -26,7 +26,7 @@
 		7792DD95179C35FF00FB5991 /* libAdapterNend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7792DD91179C35FF00FB5991 /* libAdapterNend.a */; };
 		7792DD96179C35FF00FB5991 /* libNendAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7792DD92179C35FF00FB5991 /* libNendAd.a */; };
 		7792DD97179C35FF00FB5991 /* NADView_readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD94179C35FF00FB5991 /* NADView_readme.txt */; };
-		7792DD99179C362000FB5991 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7792DD98179C362000FB5991 /* AdSupport.framework */; };
+		7792DD99179C362000FB5991 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7792DD98179C362000FB5991 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7792DD9C179D555600FB5991 /* InfoPlistProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7792DD9B179D555600FB5991 /* InfoPlistProperty.m */; };
 		7792DDA2179D7A2400FB5991 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 7792DD9F179D7A2400FB5991 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7792DDA3179D7A2400FB5991 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7792DDA1179D7A2400FB5991 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -932,7 +932,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: YUICHI KOBAYASHI";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: YUICHI KOBAYASHI";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -947,6 +948,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "88F19739-D289-424E-B236-7112159AE34C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "88F19739-D289-424E-B236-7112159AE34C";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -963,6 +966,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: YUICHI KOBAYASHI";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -971,6 +975,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "88F19739-D289-424E-B236-7112159AE34C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -979,17 +985,17 @@
 		779B83891787C934002DB143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: YUICHI KOBAYASHI (3XD53HY7MU)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YUICHI KOBAYASHI (3XD53HY7MU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "imadoco/imadoco-Prefix.pch";
 				INFOPLIST_FILE = "imadoco/imadoco-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/imadoco/ad/NendAd\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AC3F01A9-F630-422C-8667-E5405C03EE1E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AC3F01A9-F630-422C-8667-E5405C03EE1E";
 				WRAPPER_EXTENSION = app;
 			};
@@ -998,17 +1004,18 @@
 		779B838A1787C934002DB143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: YUICHI KOBAYASHI (3XD53HY7MU)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YUICHI KOBAYASHI (3XD53HY7MU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "imadoco/imadoco-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				INFOPLIST_FILE = "imadoco/imadoco-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/imadoco/ad/NendAd\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AC3F01A9-F630-422C-8667-E5405C03EE1E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AC3F01A9-F630-422C-8667-E5405C03EE1E";
 				WRAPPER_EXTENSION = app;
 			};
