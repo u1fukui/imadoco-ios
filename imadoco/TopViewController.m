@@ -16,6 +16,8 @@
 #import "NSString+Validation.h"
 #import "InfoPlistProperty.h"
 #import "SVProgressHUD.h"
+#import "Flurry.h"
+#import "FlurryEventName.h"
 
 const int kAlertInputName = 1;
 const int kAlertLaunchMailer = 2;
@@ -154,6 +156,9 @@ const int kAlertLaunchMailer = 2;
             // ダイアログ非表示
             [SVProgressHUD dismiss];
             
+            // Flurry
+            [Flurry logEvent:kEventShowHistory];
+            
             // 通知履歴画面に繊維
             HistoryViewController *controller = [[HistoryViewController alloc] initWithNibName:@"HistoryViewController" bundle:nil];
             [controller showNotificationArray:notificationArray];
@@ -205,8 +210,12 @@ const int kAlertLaunchMailer = 2;
     
     switch (alertView.tag) {
         case kAlertInputName:
-            [self requestGetMailText:[[alertView textFieldAtIndex:0] text]];
-            break;
+            if (buttonIndex == 1) {
+                [self requestGetMailText:[[alertView textFieldAtIndex:0] text]];
+                break;
+            } else {
+                break;
+            }
             
         case kAlertLaunchMailer:
             [self launchMailer:self.mailSubject body:self.mailBody];
@@ -271,7 +280,10 @@ const int kAlertLaunchMailer = 2;
 
 - (void)launchMailer:(NSString *)subject body:(NSString *)body
 {
+    // Flurry
+    [Flurry logEvent:kEventLaunchMailer];
     
+    // メーラー起動
     [[UIApplication sharedApplication] openURL:
      [NSURL URLWithString:[NSString stringWithFormat:@"mailto:?Subject=%@&body=%@",
                            [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],

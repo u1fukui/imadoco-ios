@@ -14,5 +14,7 @@ NSString * const kServerHostName = @"ServerHostName";
 NSString * const kNendId = @"NendID";
 NSString * const kNendSpotId = @"NendSpotID";
 NSString * const kEncryptKey = @"EncryptKey";
+NSString * const kFlurryApiKey = @"FlurryAPIKey";
+NSString * const kCrashlyticsApiKey = @"CrashlyticsAPIKey";
 
 @end

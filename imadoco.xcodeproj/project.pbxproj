@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7769487D17C64AB3004982E2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7769487C17C64AB3004982E2 /* Crashlytics.framework */; };
+		7769489317C65E5A004982E2 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7769489217C65E5A004982E2 /* libFlurry_4.2.3.a */; };
+		7769489617C66135004982E2 /* FlurryEventName.m in Sources */ = {isa = PBXBuildFile; fileRef = 7769489517C66135004982E2 /* FlurryEventName.m */; };
 		7792DD6A179A5CC000FB5991 /* description_bg_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD68179A5CC000FB5991 /* description_bg_top.png */; };
 		7792DD6B179A5CC000FB5991 /* description_bg_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD69179A5CC000FB5991 /* description_bg_top@2x.png */; };
 		7792DD6E179A647A00FB5991 /* description_bg_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7792DD6C179A647A00FB5991 /* description_bg_bottom.png */; };
@@ -122,6 +125,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7769487C17C64AB3004982E2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		7769489117C65E5A004982E2 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		7769489217C65E5A004982E2 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
+		7769489417C66135004982E2 /* FlurryEventName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryEventName.h; sourceTree = "<group>"; };
+		7769489517C66135004982E2 /* FlurryEventName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryEventName.m; sourceTree = "<group>"; };
 		7792DD68179A5CC000FB5991 /* description_bg_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description_bg_top.png; sourceTree = "<group>"; };
 		7792DD69179A5CC000FB5991 /* description_bg_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "description_bg_top@2x.png"; sourceTree = "<group>"; };
 		7792DD6C179A647A00FB5991 /* description_bg_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description_bg_bottom.png; sourceTree = "<group>"; };
@@ -292,6 +300,8 @@
 				779B83581787C933002DB143 /* CoreGraphics.framework in Frameworks */,
 				7792DD95179C35FF00FB5991 /* libAdapterNend.a in Frameworks */,
 				7792DD96179C35FF00FB5991 /* libNendAd.a in Frameworks */,
+				7769487D17C64AB3004982E2 /* Crashlytics.framework in Frameworks */,
+				7769489317C65E5A004982E2 /* libFlurry_4.2.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +318,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7769489017C65E5A004982E2 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				7769489117C65E5A004982E2 /* Flurry.h */,
+				7769489217C65E5A004982E2 /* libFlurry_4.2.3.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
 		7792DD70179A67E000FB5991 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +400,7 @@
 		779683F81789C6B700010AD7 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				7769489017C65E5A004982E2 /* Flurry */,
 				7792DD9D179D7A2400FB5991 /* FBEncryptor */,
 				77FE2D58179A501E006CFED6 /* FlatUIKit */,
 				77FE2D3C17943899006CFED6 /* EGOTableViewPullRefresh */,
@@ -476,6 +496,7 @@
 		779B83521787C933002DB143 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7769487C17C64AB3004982E2 /* Crashlytics.framework */,
 				7792DD98179C362000FB5991 /* AdSupport.framework */,
 				77FE2DA7179A5130006CFED6 /* CoreText.framework */,
 				7796843F1790B29500010AD7 /* MapKit.framework */,
@@ -507,6 +528,8 @@
 				779B83631787C933002DB143 /* AppDelegate.m */,
 				7792DD9A179D555600FB5991 /* InfoPlistProperty.h */,
 				7792DD9B179D555600FB5991 /* InfoPlistProperty.m */,
+				7769489417C66135004982E2 /* FlurryEventName.h */,
+				7769489517C66135004982E2 /* FlurryEventName.m */,
 				77968435178C4A9B00010AD7 /* TopViewController.h */,
 				77968436178C4A9B00010AD7 /* TopViewController.m */,
 				77968437178C4A9B00010AD7 /* TopViewController.xib */,
@@ -699,6 +722,7 @@
 				779B834C1787C933002DB143 /* Sources */,
 				779B834D1787C933002DB143 /* Frameworks */,
 				779B834E1787C933002DB143 /* Resources */,
+				7769487B17C64A8D004982E2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -815,6 +839,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7769487B17C64A8D004982E2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 9f1ab731db68aa1dc0b3c71b144ecdbcc18a3c0a";
+		};
 		779B83741787C933002DB143 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -879,6 +916,7 @@
 				7792DD9C179D555600FB5991 /* InfoPlistProperty.m in Sources */,
 				7792DDA2179D7A2400FB5991 /* FBEncryptorAES.m in Sources */,
 				7792DDA3179D7A2400FB5991 /* NSData+Base64.m in Sources */,
+				7769489617C66135004982E2 /* FlurryEventName.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,6 +1025,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: YUICHI KOBAYASHI";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "imadoco/imadoco-Prefix.pch";
 				INFOPLIST_FILE = "imadoco/imadoco-Info.plist";
@@ -994,6 +1036,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/imadoco/ad/NendAd\"",
+					"\"$(SRCROOT)/imadoco/lib/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EABCC856-F0EC-4E77-97FC-5AE46DF5302E";
@@ -1006,6 +1049,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: YUICHI KOBAYASHI";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "imadoco/imadoco-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
@@ -1014,6 +1061,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/imadoco/ad/NendAd\"",
+					"\"$(SRCROOT)/imadoco/lib/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EABCC856-F0EC-4E77-97FC-5AE46DF5302E";

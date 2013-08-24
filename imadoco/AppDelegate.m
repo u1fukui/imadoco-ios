@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 u1. All rights reserved.
 //
 
+#import <Crashlytics/Crashlytics.h>
+
 #import "AppDelegate.h"
 
 #import "TopViewController.h"
@@ -14,6 +16,8 @@
 #import "InfoPlistProperty.h"
 #import "FBEncryptorAES.h"
 #import "SVProgressHUD.h"
+#import "Flurry.h"
+#import "FlurryEventName.h"
 
 const int kTagAlertError = 1;
 
@@ -24,6 +28,10 @@ void uncaughtExceptionHandler(NSException *exception)
     NSLog(@"%@", exception.name);
     NSLog(@"%@", exception.reason);
     NSLog(@"%@", exception.callStackSymbols);
+    
+    // Flurry
+    NSString *message = [NSString stringWithFormat:@"%@", [exception callStackSymbols]];
+    [Flurry logError:@"Uncaught" message:message exception:exception];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -36,6 +44,14 @@ void uncaughtExceptionHandler(NSException *exception)
     self.rootController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
     self.window.rootViewController = self.rootController;
     [self.window makeKeyAndVisible];
+    
+    // Flurry
+    [Flurry setSecureTransportEnabled:YES];
+    [Flurry startSession:[[[NSBundle mainBundle] infoDictionary] objectForKey:kFlurryApiKey]];
+    [Flurry logEvent:kEventLaunchApp];
+    
+    // Crashlytics
+    [Crashlytics startWithAPIKey:[[[NSBundle mainBundle] infoDictionary] objectForKey:kCrashlyticsApiKey]];
     
     // ユーザ情報読み込み
     [self load];
@@ -68,7 +84,10 @@ void uncaughtExceptionHandler(NSException *exception)
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.    
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    // Flurry
+    [Flurry logEvent:kEventActiveApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

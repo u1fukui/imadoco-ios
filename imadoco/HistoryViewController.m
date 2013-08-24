@@ -16,14 +16,14 @@
 #import "FlatUIKit.h"
 #import "NotificationManager.h"
 #import "InfoPlistProperty.h"
+#import "Flurry.h"
+#import "FlurryEventName.h"
 
 @interface HistoryViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *historyTableView;
 
 @property (strong, nonatomic) NSMutableArray *notificationArray;
-
-@property (strong, nonatomic) MapViewController *mapViewController;
 
 @property (strong, nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 
@@ -170,13 +170,14 @@
 {
     Notification *notification = [self.notificationArray objectAtIndex:indexPath.row];
     if (notification) {
-        if (self.mapViewController == nil) {
-            self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController"
-                                                                         bundle:nil];
-        }
-        [self.mapViewController showNotification:notification];
+        // Flurry
+        [Flurry logEvent:kEventShowMap];
+        
+        // 地図画面に遷移
+        MapViewController *controller = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+        [controller showNotification:notification];
         [[NotificationManager sharedManager] readNotification:notification.id];
-        [self.navigationController pushViewController:self.mapViewController animated:YES];
+        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 
